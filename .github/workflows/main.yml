@@ -1,0 +1,60 @@
+# This is a basic workflow to help you get started with Actions
+
+name: E2E
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the main branch
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main, dev, staging ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+
+  electron:
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      
+      - name: Cypress.io
+        uses: cypress-io/github-action@v2
+        with:
+          headless: true
+          build: yarn build
+          start: yarn start
+  firefox:
+      runs-on: ubuntu-latest
+      container:
+        image: cypress/browsers:node12.16.1-chrome80-ff73
+        options: --user 1001
+      steps:
+        - name: Checkout
+          uses: actions/checkout@v3
+        
+        - name: Cypress.io
+          uses: cypress-io/github-action@v2
+          with:
+            browser: firefox
+            headless: true
+            build: yarn build
+            start: yarn start
+  chrome:
+    runs-on: ubuntu-latest
+    steps:
+        - name: Checkout
+          uses: actions/checkout@v3
+        
+        - name: Cypress.io
+          uses: cypress-io/github-action@v2
+          with:
+            browser: chrome
+            headless: true
+            build: yarn build
+            start: yarn start
