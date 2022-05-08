@@ -11,7 +11,9 @@ const customJestConfig = {
     testPathIgnorePatterns: ['<rootDir>[/\\\\](build|docs|node_modules|.next)[/\\\\]'],
     transformIgnorePatterns: ['[/\\\\]node_modules[/\\\\].+\\.(ts|tsx)$'],
     testEnvironment: 'jest-environment-jsdom',
-    testURL: 'http://localhost',
+    testEnvironmentOptions: {
+      url: 'http://localhost'
+    },
     transform: {
       '^.+\\.(ts|tsx)$': 'ts-jest',
     },
