@@ -13,15 +13,17 @@
     "test:unit": "jest",
     "test:unit:watch": "jest --watch",
     "test:unit:coverage": "jest --coverage",
-    "cypress:open" : " cypress open",
-    "cypress:run" : " cypress run",
+    "cypress:open": " cypress open",
+    "cypress:run": " cypress run",
     "test:e2e": "start-server-and-test production http://localhost:3000 cypress:run"
   },
   "dependencies": {
-    "@chakra-ui/react": "^1.8.8",
-    "@emotion/react": "^11",
-    "@emotion/styled": "^11",
-    "framer-motion": "^6",
+    "@mantine/core": "^4.2.4",
+    "@mantine/form": "^4.2.4",
+    "@mantine/hooks": "^4.2.4",
+    "@mantine/modals": "^4.2.4",
+    "@mantine/next": "^4.2.4",
+    "@mantine/rte": "^4.2.4",
     "next": "12.1.6",
     "react": "18.1.0",
     "react-dom": "18.1.0"
