@@ -17,9 +17,15 @@ const CustomAppshell = ({ children }: Props) => {
       header={<AppHeader />}
       footer={<AppFooter />}
       navbar={<AppNavbar />}
+      style={{ height: '100%' }}
+      fixed
       styles={(theme) => {
         return {
+          // body: {
+          //   height: '100%',
+          // },
           main: {
+            height: '100%',
             backgroundColor:
               theme.colorScheme === 'dark'
                 ? theme.colors.dark[8]

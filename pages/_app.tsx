@@ -27,7 +27,7 @@ export default function App(props: AppProps) {
       >
         <NavbarProvider>
           <CustomAppShell>
-            <Component {...pageProps} />
+            <Component {...pageProps} style={{ height: '100%' }} />
           </CustomAppShell>
         </NavbarProvider>
       </MantineProvider>
