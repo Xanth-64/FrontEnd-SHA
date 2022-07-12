@@ -2,7 +2,7 @@ import {
   Footer,
   Grid,
   Text,
-  Group,
+  Center,
   useMantineTheme,
   MediaQuery,
 } from '@mantine/core';
@@ -12,8 +12,7 @@ import { useState } from 'react';
 import AppInformationModal from '../atoms/AppInformationModal';
 const AppFooter = () => {
   const theme = useMantineTheme();
-  const [openModal, setOpenModal] = useState(true);
-  console.log(theme.colors.gray[1]);
+  const [openModal, setOpenModal] = useState(false);
   return (
     <Footer
       height={59}
@@ -39,16 +38,20 @@ const AppFooter = () => {
           </Grid.Col>
         </MediaQuery>
         <Grid.Col xs={6}>
-          <Group position="right">
-            <InfoCircle
-              size={44}
-              color={theme.colors.dark[3]}
-              style={{ cursor: 'pointer' }}
-              onClick={() => {
-                setOpenModal(true);
-              }}
-            />
-          </Group>
+          <Grid>
+            <Grid.Col xs={2} offsetXs={10}>
+              <Center>
+                <InfoCircle
+                  size={44}
+                  color={theme.colors.dark[3]}
+                  style={{ cursor: 'pointer' }}
+                  onClick={() => {
+                    setOpenModal(true);
+                  }}
+                />
+              </Center>
+            </Grid.Col>
+          </Grid>
         </Grid.Col>
       </Grid>
       <AppInformationModal

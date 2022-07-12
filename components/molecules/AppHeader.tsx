@@ -9,11 +9,13 @@ const AppHeader = () => {
     <Header height={60}>
       <Center style={{ height: 60 }}>
         <Group spacing="xs">
-          <MediaQuery smallerThan="xs" styles={{ display: 'None' }}>
+          <MediaQuery smallerThan="md" styles={{ display: 'None' }}>
             <ApplicationLogo />
           </MediaQuery>
-          <ApplicationTitle />
-          <MediaQuery largerThan="xs" styles={{ display: 'None' }}>
+          <MediaQuery smallerThan="xs" styles={{ display: 'None' }}>
+            <ApplicationTitle />
+          </MediaQuery>
+          <MediaQuery largerThan="md" styles={{ display: 'None' }}>
             <Burger
               opened={displayNavbar}
               title={title}

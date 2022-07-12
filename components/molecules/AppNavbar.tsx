@@ -1,4 +1,10 @@
-import { Navbar, ScrollArea, Divider, Transition } from '@mantine/core';
+import {
+  Navbar,
+  ScrollArea,
+  Divider,
+  Transition,
+  useMantineTheme,
+} from '@mantine/core';
 import { useViewportSize } from '@mantine/hooks';
 import { useNavbarContext } from '../../lib/NavbarContext';
 import NavbarList from '../atoms/NavbarList';
@@ -9,6 +15,7 @@ import navElement from '../../types/navElement';
 const AppNavbar = () => {
   const { displayNavbar } = useNavbarContext();
   const { width } = useViewportSize();
+  const theme = useMantineTheme();
   // TODO: Replace mock data with real data
 
   const mockNavList: navElement[] = [
@@ -17,7 +24,7 @@ const AppNavbar = () => {
     { link: '', icon: 'mdi:account', title: 'Example', color: 'blue' },
     { link: '', icon: 'mdi:account', title: 'Example', color: 'orange' },
   ];
-  const mobile = width <= 576;
+  const mobile = width <= theme.breakpoints.md;
   return (
     <>
       {mobile ? (
