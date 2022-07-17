@@ -1,7 +1,9 @@
 import { Card, Title, Text, Grid, Button, Image, Stack } from '@mantine/core';
 import { useState } from 'react';
+import LoginModal from '../molecules/LoginModal';
 import SignupModal from '../molecules/SignupModal';
 const WelcomeCard = () => {
+  const [displayLogin, setDisplayLogin] = useState(false);
   const [displaySignup, setDisplaySignup] = useState(false);
   return (
     <Card>
@@ -17,7 +19,14 @@ const WelcomeCard = () => {
         </Text>
         <Grid align="center" justify="space-around">
           <Grid.Col md={6}>
-            <Button color={'dark'} radius={'lg'} fullWidth>
+            <Button
+              color={'dark'}
+              radius={'lg'}
+              fullWidth
+              onClick={() => {
+                setDisplayLogin(true);
+              }}
+            >
               Iniciar Sesión
             </Button>
           </Grid.Col>
@@ -38,6 +47,7 @@ const WelcomeCard = () => {
       <SignupModal
         userRedirect={() => {
           setDisplaySignup(false);
+          setDisplayLogin(true);
         }}
         centered
         overflow={'outside'}
@@ -45,9 +55,20 @@ const WelcomeCard = () => {
         withCloseButton={false}
         size={'sm'}
         padding={'xl'}
-        // style={{ marginLeft: '0' }}
         onClose={() => {
           setDisplaySignup(false);
+        }}
+        overlayBlur={4}
+      />
+      <LoginModal
+        centered
+        overflow={'outside'}
+        opened={displayLogin}
+        withCloseButton={false}
+        size={'sm'}
+        padding={'xl'}
+        onClose={() => {
+          setDisplayLogin(false);
         }}
         overlayBlur={4}
       />
