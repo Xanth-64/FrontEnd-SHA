@@ -57,7 +57,6 @@ const SignupModal = (props: SignupModalProps) => {
               setCookie('idToken', response.data.data.idToken, {
                 maxAge: response.data.data.expiresIn,
               });
-              console.log(response);
               router.push('/teacher/dashboard');
               return;
             }
