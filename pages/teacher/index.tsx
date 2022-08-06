@@ -1,8 +1,8 @@
 import type { NextPage } from 'next';
 import type { GetStaticPropsContext } from 'next';
 
-const Templates: NextPage = () => {
-  return <h1>Templates Screen</h1>;
+const TeacherScreen: NextPage = () => {
+  return <h1>TeacherScreen Screen</h1>;
 };
 
 export async function getStaticProps(context: GetStaticPropsContext) {
@@ -14,4 +14,4 @@ export async function getStaticProps(context: GetStaticPropsContext) {
   };
 }
 
-export default Templates;
+export default TeacherScreen;

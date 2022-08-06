@@ -17,6 +17,7 @@ const AppFooter = () => {
     <Footer
       height={59}
       style={{ padding: '0 20px', display: 'flex', alignItems: 'center' }}
+      fixed
     >
       <Grid justify={'space-between'} align="center" style={{ width: '100%' }}>
         <MediaQuery smallerThan={'xs'} styles={{ display: 'None' }}>

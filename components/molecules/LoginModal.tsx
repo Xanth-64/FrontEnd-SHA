@@ -11,8 +11,10 @@ import { useState } from 'react';
 import { useForm, zodResolver } from '@mantine/form';
 import { useRouter } from 'next/router';
 import LoginSchema from '../../schemas/LoginSchema';
-import axiosInstance from '../../lib/axiosInstance';
+import axiosInstance from '../../lib/constants/axiosInstance';
 import { setCookie } from 'cookies-next';
+import useUser from '../../lib/hooks/useUser';
+import { useSWRConfig } from 'swr';
 
 const LoginModal = (props: ModalProps) => {
   const form = useForm({
@@ -24,8 +26,15 @@ const LoginModal = (props: ModalProps) => {
   });
   const [loading, setLoading] = useState(false);
   const router = useRouter();
+  const { mutate } = useSWRConfig();
+  const { user } = useUser();
   return (
-    <Modal {...props} style={{ padding: '36 28' }}>
+    <Modal
+      {...props}
+      closeOnClickOutside={!loading}
+      closeOnEscape={!loading}
+      style={{ padding: '36 28' }}
+    >
       <form
         onSubmit={form.onSubmit(async (values) => {
           try {
@@ -35,7 +44,8 @@ const LoginModal = (props: ModalProps) => {
               setCookie('idToken', response.data.data.idToken, {
                 maxAge: response.data.data.expiresIn,
               });
-              router.push('/teacher/dashboard');
+              await mutate('current_user/');
+              router.push(`${user?.role[0].role_name}`);
               return;
             }
           } catch (error: any) {
@@ -68,12 +78,14 @@ const LoginModal = (props: ModalProps) => {
             size={'md'}
             style={{ width: '100%' }}
             {...form.getInputProps('email')}
+            disabled={loading}
           />
           <PasswordInput
             label="Contraseña"
             size={'md'}
             style={{ width: '100%' }}
             {...form.getInputProps('password')}
+            disabled={loading}
           />
           <Button
             type="submit"

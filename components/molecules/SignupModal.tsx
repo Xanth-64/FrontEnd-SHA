@@ -12,11 +12,11 @@ import {
 import { useState } from 'react';
 import { useForm, zodResolver } from '@mantine/form';
 import SignupSchema from '../../schemas/SignupSchema';
-import axiosInstance from '../../lib/axiosInstance';
+import axiosInstance from '../../lib/constants/axiosInstance';
 import { setCookie } from 'cookies-next';
 import { useRouter } from 'next/router';
-import { showNotification } from '@mantine/notifications';
-
+import useUser from '../../lib/hooks/useUser';
+import { useSWRConfig } from 'swr';
 interface SignupModalProps extends ModalProps {
   userRedirect: () => void;
 }
@@ -24,6 +24,8 @@ interface SignupModalProps extends ModalProps {
 const SignupModal = (props: SignupModalProps) => {
   const { userRedirect, ...modalProps } = props;
   const [loading, setLoading] = useState(false);
+  const { mutate } = useSWRConfig();
+  const { user } = useUser();
   const form = useForm({
     schema: zodResolver(SignupSchema),
     initialValues: {
@@ -35,7 +37,12 @@ const SignupModal = (props: SignupModalProps) => {
   });
   const router = useRouter();
   return (
-    <Modal {...modalProps} style={{ padding: '36 28' }}>
+    <Modal
+      {...modalProps}
+      closeOnClickOutside={!loading}
+      closeOnEscape={!loading}
+      style={{ padding: '36 28' }}
+    >
       <form
         onSubmit={form.onSubmit(async (values) => {
           const submitValues = {
@@ -57,7 +64,8 @@ const SignupModal = (props: SignupModalProps) => {
               setCookie('idToken', response.data.data.idToken, {
                 maxAge: response.data.data.expiresIn,
               });
-              router.push('/teacher/dashboard');
+              await mutate('current_user/');
+              router.push(`${user?.role[0].role_name}`);
               return;
             }
           } catch (error: any) {
@@ -88,23 +96,27 @@ const SignupModal = (props: SignupModalProps) => {
             size={'md'}
             style={{ width: '100%' }}
             {...form.getInputProps('email')}
+            disabled={loading}
           />
           <PasswordInput
             label="Contraseña"
             size={'md'}
             style={{ width: '100%' }}
             {...form.getInputProps('password')}
+            disabled={loading}
           />
           <PasswordInput
             label="Confirmar Contraseña"
             size={'md'}
             style={{ width: '100%' }}
             {...form.getInputProps('confirm')}
+            disabled={loading}
           />
           <Checkbox
             label="Soy un Instructor"
             color="orange"
             {...form.getInputProps('instructor')}
+            disabled={loading}
           />
           <Button
             type="submit"
