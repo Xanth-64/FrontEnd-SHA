@@ -1,8 +1,8 @@
 import type { NextPage } from 'next';
 import type { GetServerSidePropsContext } from 'next';
 
-const Templates: NextPage = () => {
-  return <h1>Templates Screen</h1>;
+const TeacherScreen: NextPage = () => {
+  return <h1>TeacherScreen Screen</h1>;
 };
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
@@ -14,4 +14,4 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
   };
 }
 
-export default Templates;
+export default TeacherScreen;

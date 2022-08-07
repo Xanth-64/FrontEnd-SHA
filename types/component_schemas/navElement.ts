@@ -1,6 +1,7 @@
+import {ReactNode} from 'react'
 type navElement = {
   link: string;
-  icon: string;
+  icon: ReactNode;
   title: string;
   color: string;
 };

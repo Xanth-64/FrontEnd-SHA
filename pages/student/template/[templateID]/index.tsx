@@ -1,17 +1,17 @@
 import type { NextPage } from 'next';
 import type { GetServerSidePropsContext } from 'next';
 
-const Templates: NextPage = () => {
-  return <h1>Templates Screen</h1>;
+const Template: NextPage = () => {
+  return <h1>Template Screen</h1>;
 };
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
   return {
     props: {
       protected: true,
-      expected_role: 'teacher',
+      expected_role: 'student',
     },
   };
 }
 
-export default Templates;
+export default Template;

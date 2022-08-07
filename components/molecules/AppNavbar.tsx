@@ -6,24 +6,29 @@ import {
   useMantineTheme,
 } from '@mantine/core';
 import { useViewportSize } from '@mantine/hooks';
-import { useNavbarContext } from '../../lib/NavbarContext';
+import { useNavbarContext } from '../../lib/contexts/NavbarContext';
+import useUser from '../../lib/hooks/useUser';
 import NavbarList from '../atoms/NavbarList';
 import ProfileData from '../atoms/ProfileData';
-
-import navElement from '../../types/navElement';
-
+import { useEffect, useState } from 'react';
+import navElement from '../../types/component_schemas/navElement';
+import teacherNavList from '../../lib/constants/teacherNavlist';
 const AppNavbar = () => {
   const { displayNavbar } = useNavbarContext();
   const { width } = useViewportSize();
   const theme = useMantineTheme();
-  // TODO: Replace mock data with real data
-
-  const mockNavList: navElement[] = [
-    { link: '', icon: 'mdi:account', title: 'Example', color: 'green' },
-    { link: '', icon: 'mdi:account', title: 'Example', color: 'red' },
-    { link: '', icon: 'mdi:account', title: 'Example', color: 'blue' },
-    { link: '', icon: 'mdi:account', title: 'Example', color: 'orange' },
-  ];
+  const { user } = useUser();
+  const [navList, setNavList] = useState<navElement[]>([]);
+  useEffect(() => {
+    if (user?.role[0].role_name === 'teacher') {
+      setNavList(teacherNavList);
+      return;
+    }
+    if (user?.role[0].role_name === 'student') {
+      setNavList([]);
+      return;
+    }
+  }, [user]);
   const mobile = width <= theme.breakpoints.md;
   return (
     <>
@@ -40,14 +45,19 @@ const AppNavbar = () => {
                 component={ScrollArea}
                 style={{ width: '100%' }}
               >
-                <NavbarList navElementList={mockNavList} />
+                <NavbarList navElementList={navList} />
               </Navbar.Section>
               <Navbar.Section>
-                {/* TODO: Replace mock data with real data */}
                 <Divider size={'xs'} />
                 <ProfileData
-                  name="Andres Eloy"
-                  email="30258079@correo.unimet.edu.ve"
+                  name={
+                    user
+                      ? `${user.user.first_name} ${user.user.last_name}`.trim()
+                      : ''
+                  }
+                  email={user ? user.user.email : ''}
+                  imageURL={user ? user.user.image_url : ''}
+                  role={user ? user.role[0].role_name : ''}
                 />
               </Navbar.Section>
             </Navbar>
@@ -57,15 +67,20 @@ const AppNavbar = () => {
         <Navbar width={{ base: 300 }}>
           <Navbar.Section grow component={ScrollArea}>
             <div>
-              <NavbarList navElementList={mockNavList} />
+              <NavbarList navElementList={navList} />
             </div>
           </Navbar.Section>
           <Navbar.Section>
             <Divider size={'xs'} />
-            {/* TODO: Replace mock data with real data */}
             <ProfileData
-              name="Andres Eloy"
-              email="30258079@correo.unimet.edu.ve"
+              name={
+                user
+                  ? `${user.user.first_name} ${user.user.last_name}`.trim()
+                  : ''
+              }
+              email={user ? user.user.email : ''}
+              imageURL={user ? user.user.image_url : ''}
+              role={user ? user.role[0].role_name : ''}
             />
           </Navbar.Section>
         </Navbar>

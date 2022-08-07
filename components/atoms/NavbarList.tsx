@@ -1,22 +1,32 @@
-import navElement from '../../types/navElement';
+import navElement from '../../types/component_schemas/navElement';
 import { Stack, ThemeIcon, Text, Grid } from '@mantine/core';
 import { v4 } from 'uuid';
-import { Icon } from '@iconify/react';
-
+import { useRouter } from 'next/router';
 type Props = {
   navElementList: navElement[];
 };
+import { useNavbarContext } from '../../lib/contexts/NavbarContext';
 
 const NavbarList = (props: Props) => {
   const { navElementList } = props;
+  const router = useRouter();
+  const { displayNavbar, toggleDisplay } = useNavbarContext();
   return (
     <Stack spacing="md" style={{ width: '100%', padding: '10px' }}>
       {navElementList.map((element: navElement) => {
         return (
           <Grid
-            key={v4()}
             align="center"
             gutter={10}
+            onClick={() => {
+              if (element.link) {
+                router.push(element.link);
+                if (displayNavbar) {
+                  toggleDisplay();
+                }
+              }
+            }}
+            key={v4()}
             style={{
               height: '56px',
               cursor: 'pointer',
@@ -37,7 +47,7 @@ const NavbarList = (props: Props) => {
                 size={'lg'}
                 radius="sm"
               >
-                <Icon icon={element?.icon ?? ''} />
+                {element.icon ?? null}
               </ThemeIcon>
             </Grid.Col>
             <Grid.Col span={10}>

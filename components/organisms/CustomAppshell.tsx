@@ -4,11 +4,13 @@ import AppFooter from '../molecules/AppFooter';
 import dynamic from 'next/dynamic';
 
 import { ReactNode } from 'react';
+import useUser from '../../lib/hooks/useUser';
 
 type Props = {
   children: ReactNode;
 };
 const CustomAppshell = ({ children }: Props) => {
+  const { user } = useUser();
   const AppNavbar = dynamic(() => import('../molecules/AppNavbar'), {
     ssr: false,
   });
@@ -16,9 +18,10 @@ const CustomAppshell = ({ children }: Props) => {
     <AppShell
       header={<AppHeader />}
       footer={<AppFooter />}
-      navbar={<AppNavbar />}
+      navbar={user ? <AppNavbar /> : undefined}
       style={{ height: '100%' }}
-      fixed
+      // fixed
+      zIndex={100}
       styles={(theme) => {
         return {
           // body: {
