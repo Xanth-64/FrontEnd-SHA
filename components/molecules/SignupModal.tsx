@@ -27,7 +27,7 @@ const SignupModal = (props: SignupModalProps) => {
   const { mutate } = useSWRConfig();
   const { user } = useUser();
   const form = useForm({
-    schema: zodResolver(SignupSchema),
+    validate: zodResolver(SignupSchema),
     initialValues: {
       email: '',
       password: '',

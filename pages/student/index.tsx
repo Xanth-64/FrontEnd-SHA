@@ -1,11 +1,11 @@
 import type { NextPage } from 'next';
-import type { GetStaticPropsContext } from 'next';
+import type { GetServerSidePropsContext } from 'next';
 
 const StudentScreen: NextPage = () => {
   return <h1>StudentScreen Screen</h1>;
 };
 
-export async function getStaticProps(context: GetStaticPropsContext) {
+export async function getServerSideProps(context: GetServerSidePropsContext) {
   return {
     props: {
       protected: true,

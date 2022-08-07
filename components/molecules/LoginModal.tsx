@@ -18,7 +18,7 @@ import { useSWRConfig } from 'swr';
 
 const LoginModal = (props: ModalProps) => {
   const form = useForm({
-    schema: zodResolver(LoginSchema),
+    validate: zodResolver(LoginSchema),
     initialValues: {
       email: '',
       password: '',
