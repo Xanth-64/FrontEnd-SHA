@@ -1,7 +1,14 @@
 import type { NextPage } from 'next';
 import type { GetServerSidePropsContext } from 'next';
+import CardHolder from '../../../components/templates/CardHolder';
+import CreateTopicCard from '../../../components/organisms/CreateTopicCard';
+
 const Topics: NextPage = () => {
-  return <h1>Topics Screen</h1>;
+  return (
+    <CardHolder>
+      <CreateTopicCard />
+    </CardHolder>
+  );
 };
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {

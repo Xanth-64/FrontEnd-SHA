@@ -1,4 +1,13 @@
-import { Card, Title, Text, Grid, Button, Image, Stack } from '@mantine/core';
+import {
+  Card,
+  Title,
+  Text,
+  Grid,
+  Button,
+  Image,
+  Stack,
+  Center,
+} from '@mantine/core';
 import { useState } from 'react';
 import LoginModal from '../molecules/LoginModal';
 import SignupModal from '../molecules/SignupModal';
@@ -8,13 +17,19 @@ const WelcomeCard = () => {
   return (
     <Card>
       <Card.Section>
-        <Image src="home_image.png" alt="Students Drawing Sitting on a Book" />
+        <Center>
+          <Image
+            src="home_image.png"
+            alt="Students Drawing Sitting on a Book"
+            style={{ maxWidth: '450px' }}
+          />
+        </Center>
       </Card.Section>
       <Stack justify="flex-start" style={{ paddingTop: '18px' }}>
         <Title order={3}>¡Bienvenido!</Title>
         <Text size={'md'}>
           Este es un prototipo de un Sistema de Hipermedia Adaptativa para los
-          alumnos de Programación para Ingenieros. Esperamos que le sea de
+          alumnos de Algoritmos de Programación. Esperamos que le sea de
           utilidad en su proceso de preparación para la asignatura.{' '}
         </Text>
         <Grid align="center" justify="space-around">

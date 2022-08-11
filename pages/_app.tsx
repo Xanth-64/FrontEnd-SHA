@@ -65,6 +65,7 @@ export default function App(props: AppProps) {
         withNormalizeCSS
         theme={{
           colorScheme: 'light',
+          loader: 'bars',
         }}
       >
         <NavbarProvider>
