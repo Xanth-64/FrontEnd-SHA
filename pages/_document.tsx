@@ -10,7 +10,14 @@ export default class _Document extends Document {
   render() {
     return (
       <Html style={{ height: '100%' }}>
-        <Head />
+        <Head>
+          <script
+            src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.0-beta.2/dist/iconify-icon.min.js"
+            async
+          ></script>
+        </Head>
+        {/* <Head /> */}
+
         <body style={{ height: '100%' }}>
           <Main />
           <NextScript />
