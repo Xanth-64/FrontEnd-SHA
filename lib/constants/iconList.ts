@@ -1,4 +1,4 @@
-import iconInfo from '../../types/component_schemas/iconInfo';
+import iconInfo from '../../../types/component_schemas/iconInfo';
 
 const iconList: iconInfo[] = [
   {

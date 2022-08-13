@@ -36,7 +36,7 @@ const useUser = () => {
   });
   return {
     user: data,
-    isLoading: !error && data === undefined,
+    isLoading: error === undefined && data === undefined,
     isError: error,
   };
 };

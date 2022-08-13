@@ -1,8 +1,7 @@
-import navElement from '../../types/component_schemas/navElement';
+import navElement from '../../../types/component_schemas/navElement';
 import {
   Bulb,
   Notebook,
-  Ruler2,
   School,
   ChartInfographic,
 } from 'tabler-icons-react';
@@ -18,12 +17,6 @@ const teacherNavList: navElement[] = [
     title: 'Gestión de Templates',
     color: 'violet',
     icon: <Notebook size={16} />,
-  },
-  {
-    link: '/teacher/rules',
-    title: 'Creación de Reglas',
-    color: 'grape',
-    icon: <Ruler2 size={16} />,
   },
   {
     link: '/student',

@@ -12,7 +12,7 @@ import NavbarList from '../atoms/NavbarList';
 import ProfileData from '../atoms/ProfileData';
 import { useEffect, useState } from 'react';
 import navElement from '../../types/component_schemas/navElement';
-import teacherNavList from '../../lib/constants/teacherNavlist';
+import teacherNavList from '../../lib/constants/navLists/teacherNavlist';
 const AppNavbar = () => {
   const { displayNavbar } = useNavbarContext();
   const { width } = useViewportSize();

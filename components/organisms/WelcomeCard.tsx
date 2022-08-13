@@ -15,7 +15,7 @@ const WelcomeCard = () => {
   const [displayLogin, setDisplayLogin] = useState(false);
   const [displaySignup, setDisplaySignup] = useState(false);
   return (
-    <Card>
+    <Card shadow={'sm'} radius={'md'}>
       <Card.Section>
         <Center>
           <Image
