@@ -10,6 +10,7 @@ import {
 import { ChevronRight, Settings, Logout } from 'tabler-icons-react';
 import { deleteCookie } from 'cookies-next';
 import { useRouter } from 'next/router';
+import { useNavbarContext } from '../../lib/contexts/NavbarContext';
 type userProps = {
   name: string;
   email: string;
@@ -19,6 +20,8 @@ type userProps = {
 
 const ProfileData = (props: userProps) => {
   const { name, email, imageURL, role } = props;
+  const { displayNavbar, toggleDisplay } = useNavbarContext();
+
   const router = useRouter();
   return (
     <Menu loop>
@@ -90,6 +93,9 @@ const ProfileData = (props: userProps) => {
       <Menu.Dropdown>
         <Menu.Item
           onClick={() => {
+            if (displayNavbar) {
+              toggleDisplay();
+            }
             router.push(`/${role}/settings`);
           }}
           icon={<Settings size={18} />}
@@ -98,6 +104,9 @@ const ProfileData = (props: userProps) => {
         </Menu.Item>
         <Menu.Item
           onClick={() => {
+            if (displayNavbar) {
+              toggleDisplay();
+            }
             deleteCookie('idToken');
             router.push('/home');
           }}

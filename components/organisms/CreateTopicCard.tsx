@@ -59,8 +59,8 @@ const CreateTopicCard = () => {
     fetch_topics();
   }, [page, pageSize, showModal]);
   return (
-    <Card shadow={'sm'}>
-      <Stack spacing={36} style={{ padding: '36 28' }}>
+    <Card shadow={'sm'} radius={'md'}>
+      <Stack spacing={'xl'} style={{ padding: '36px 28px' }}>
         <CustomLoadingOverlay visible={loading} />
         <Group grow position={'apart'}>
           {!mobile ? <Title order={3}>Tópicos de Conocimiento</Title> : null}

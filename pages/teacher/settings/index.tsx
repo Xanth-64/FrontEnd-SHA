@@ -1,8 +1,18 @@
 import type { NextPage } from 'next';
 import type { GetServerSidePropsContext } from 'next';
+import ChangePasswordCard from '../../../components/organisms/ChangePasswordCard';
+import EnableInstructorsCard from '../../../components/organisms/EnableInstructorsCard';
+import TweakProfileCard from '../../../components/organisms/TweakProfileCard';
+import CardHolder from '../../../components/templates/CardHolder';
 
 const Settings: NextPage = () => {
-  return <h1>Settings Screen</h1>;
+  return (
+    <CardHolder>
+      <TweakProfileCard />
+      <ChangePasswordCard />
+      <EnableInstructorsCard />
+    </CardHolder>
+  );
 };
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {

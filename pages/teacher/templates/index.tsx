@@ -1,8 +1,22 @@
 import type { NextPage } from 'next';
 import type { GetServerSidePropsContext } from 'next';
+import { useState } from 'react';
+import CreateTemplateCard from '../../../components/organisms/CreateTemplateCard';
+import SelectTopicCard from '../../../components/organisms/SelectTopicCard';
+import CardHolder from '../../../components/templates/CardHolder';
 
 const Templates: NextPage = () => {
-  return <h1>Templates Screen</h1>;
+  const [currentTopic, setCurrentTopic] = useState<string>('');
+  return (
+    <CardHolder>
+      <SelectTopicCard
+        getActiveTopic={currentTopic}
+        setActiveTopic={setCurrentTopic}
+      >
+        {currentTopic ? <CreateTemplateCard topic={currentTopic}/> : null}
+      </SelectTopicCard>
+    </CardHolder>
+  );
 };
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
