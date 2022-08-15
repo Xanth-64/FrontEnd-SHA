@@ -10,7 +10,7 @@ type Props = {
   children: ReactNode;
 };
 const CustomAppshell = ({ children }: Props) => {
-  const { user } = useUser();
+  const { user, isLoading, isError } = useUser();
   const AppNavbar = dynamic(() => import('../molecules/AppNavbar'), {
     ssr: false,
   });
@@ -18,7 +18,7 @@ const CustomAppshell = ({ children }: Props) => {
     <AppShell
       header={<AppHeader />}
       footer={<AppFooter />}
-      navbar={user ? <AppNavbar /> : undefined}
+      navbar={user || isLoading ? <AppNavbar /> : undefined}
       style={{ height: '100%' }}
       // fixed
       zIndex={100}

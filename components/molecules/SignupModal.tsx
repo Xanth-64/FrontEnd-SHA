@@ -70,14 +70,14 @@ const SignupModal = (props: SignupModalProps) => {
             }
           } catch (error: any) {
             console.error(error);
-            if (error.response.status === 403) {
+            if (error?.response?.status === 403) {
               if (error.response.data.data.error === 'EMAIL_ALREADY_EXISTS') {
                 form.setErrors({
                   email: 'El correo elegido se encuenta actualmente en uso.',
                 });
               }
             }
-            if (error.response.status === 500) {
+            if (error?.response?.status === 500) {
               form.setErrors({
                 email: '¡Error interno del servidor! Intente nuevamente.',
               });

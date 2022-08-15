@@ -9,6 +9,7 @@ import { useRouter } from 'next/router';
 import { showNotification } from '@mantine/notifications';
 import { ShieldLock } from 'tabler-icons-react';
 import { useEffect } from 'react';
+
 export default function App(props: AppProps) {
   const { Component, pageProps } = props;
   const { user, isLoading } = useUser();
@@ -42,9 +43,10 @@ export default function App(props: AppProps) {
             return;
           }
         }
-      }
-      if (user) {
-        router.push(`/${user.role[0].role_name}`);
+      } else {
+        if (user) {
+          router.push(`/${user.role[0].role_name}`);
+        }
       }
     }
   };
