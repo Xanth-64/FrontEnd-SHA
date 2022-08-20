@@ -33,6 +33,7 @@ const LoginModal = (props: ModalProps) => {
       {...props}
       closeOnClickOutside={!loading}
       closeOnEscape={!loading}
+      withCloseButton={!loading}
       style={{ padding: '36 28' }}
     >
       <form
