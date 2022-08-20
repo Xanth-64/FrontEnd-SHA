@@ -41,6 +41,7 @@ const SignupModal = (props: SignupModalProps) => {
       {...modalProps}
       closeOnClickOutside={!loading}
       closeOnEscape={!loading}
+      withCloseButton={!loading}
       style={{ padding: '36 28' }}
     >
       <form

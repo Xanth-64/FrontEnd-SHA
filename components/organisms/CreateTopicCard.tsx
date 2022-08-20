@@ -8,7 +8,6 @@ import {
   useMantineTheme,
   Text,
   Button,
-  LoadingOverlay,
 } from '@mantine/core';
 import { useViewportSize } from '@mantine/hooks';
 import { useState, useEffect } from 'react';
