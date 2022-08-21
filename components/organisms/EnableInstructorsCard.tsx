@@ -28,6 +28,8 @@ const EnableInstructorsCard = () => {
   const fetch_instructors = () => {
     const inner_function = async () => {
       try {
+        setLoading(true);
+
         const response = await axiosInstance.get('/users/with_pagination', {
           params: {
             page: page,
@@ -42,10 +44,9 @@ const EnableInstructorsCard = () => {
         setPage(page <= totalPages ? page : 1);
         setInstructors(response.data.data.items);
       } catch (error: any) {}
+      setLoading(false);
     };
-    setLoading(true);
     inner_function();
-    setLoading(false);
   };
   const toggleInstructor = async (instructor: user) => {
     setLoading(true);

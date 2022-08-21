@@ -2,7 +2,7 @@ import { z } from 'zod';
 
 const TopicSchema = z.object({
   title: z
-    .string({ required_error: 'El correo electrónico es requerido' })
+    .string({ required_error: 'El titulo del tema es requerido' })
     .min(8, 'El título del tema debe tener al menos 8 caracteres')
     .max(30, 'El título del tema no puede tener más de 30 caracteres')
     .trim(),
