@@ -3,6 +3,7 @@ import type { GetServerSidePropsContext } from 'next';
 import ChangePasswordCard from '../../../components/organisms/ChangePasswordCard';
 import EnableInstructorsCard from '../../../components/organisms/EnableInstructorsCard';
 import TweakProfileCard from '../../../components/organisms/TweakProfileCard';
+import NonSSRWrapper from '../../../components/overlays/NonSSRWrapper';
 import CardHolder from '../../../components/templates/CardHolder';
 
 const Settings: NextPage = () => {
@@ -10,7 +11,9 @@ const Settings: NextPage = () => {
     <CardHolder>
       <TweakProfileCard />
       <ChangePasswordCard />
-      <EnableInstructorsCard />
+      <NonSSRWrapper>
+        <EnableInstructorsCard />
+      </NonSSRWrapper>
     </CardHolder>
   );
 };
