@@ -6,7 +6,7 @@ import customDropzoneProps from '../../types/component_schemas/customDropzonePro
 import { useState } from 'react';
 
 const CustomDropzone = (props: customDropzoneProps) => {
-  const { fileUrl, setFileUrl, ...dropzoneProps } = props;
+  const { fileUrl, setFileUrl,dropZonePrompt, ...dropzoneProps } = props;
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const theme = useMantineTheme();
@@ -73,7 +73,7 @@ const CustomDropzone = (props: customDropzoneProps) => {
 
           <div>
             <Text size="xl" inline>
-              Coloque su nueva foto de perfil
+              {dropZonePrompt}
             </Text>
             <Text size="sm" color="dimmed" inline mt={7}>
               Arrastre y suelte la imagen a utilizar en este recuadro

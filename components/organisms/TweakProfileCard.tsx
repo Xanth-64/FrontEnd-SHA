@@ -97,6 +97,7 @@ const TweakProfileCard = () => {
           fileUrl={currentFileUrl}
           setFileUrl={updateUserImage}
           loading={loading}
+          dropZonePrompt={'Coloque su nueva foto de perfil'}
         />
         <Center>
           <Image
