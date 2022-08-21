@@ -1,3 +1,5 @@
+import role from "./role";
+
 type user = {
   email: string;
   first_name?: string;
@@ -5,5 +7,6 @@ type user = {
   created_at?: string;
   image_url?: string;
   last_name?: string;
+  role? : role[];
 };
 export default user;
