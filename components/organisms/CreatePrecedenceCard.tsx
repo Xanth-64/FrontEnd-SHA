@@ -18,7 +18,11 @@ import prelation from '../../types/api_schemas/prelation';
 import axiosInstance from '../../lib/constants/axiosInstance';
 import ShowFailedNotification from '../../lib/utils/ShowFailedNotification';
 import CustomLoadingOverlay from '../overlays/CustomLoadingOverlay';
-const CreatePrecedenceCard = () => {
+const CreatePrecedenceCard = ({
+  updatePrecedenceGraph,
+}: {
+  updatePrecedenceGraph: () => void;
+}) => {
   const [pageSize, setPageSize] = useState<string>('10');
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
@@ -65,6 +69,8 @@ const CreatePrecedenceCard = () => {
     setShowModal(true);
   };
   useEffect(fetch_prelations, [page, pageSize, showModal]);
+  useEffect(updatePrecedenceGraph, [page, pageSize, showModal]);
+
   return (
     <Card shadow={'sm'} radius={'md'}>
       <Stack spacing={'xl'} style={{ padding: '36px 28px' }}>
