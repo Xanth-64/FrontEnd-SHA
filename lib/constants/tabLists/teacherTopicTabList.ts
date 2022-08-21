@@ -3,7 +3,7 @@ import { SquarePlus, ArrowsLeftRight } from 'tabler-icons-react';
 
 const teacherTopicTabList: topNavigationTab[] = [
   {
-    label: 'Añadir Páginas',
+    label: 'Crear Tópicos',
     value: 'createtopics',
     icon: SquarePlus,
   },
