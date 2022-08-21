@@ -3,10 +3,7 @@ import {
   Table,
   Text,
   useMantineTheme,
-  ThemeIcon,
   Center,
-  Group,
-  UnstyledButton,
   Switch,
 } from '@mantine/core';
 import { useViewportSize } from '@mantine/hooks';

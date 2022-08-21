@@ -24,7 +24,10 @@ const useUser = () => {
         const user_data = await axiosInstance.get(user_path);
         return user_data.data.data;
       } catch (error: any) {
-        if (error?.response?.status === 401 || error?.response?.status === 500) {
+        if (
+          error?.response?.status === 401 ||
+          error?.response?.status === 500
+        ) {
           deleteCookie('idToken');
         }
       }
