@@ -5,11 +5,12 @@ import {
   TextInput,
   Textarea,
   Button,
-  FileInput,
   Grid,
   Image,
   Center,
+  useMantineTheme,
 } from '@mantine/core';
+import { useViewportSize } from '@mantine/hooks';
 import { useForm, zodResolver } from '@mantine/form';
 import { useEffect, useState } from 'react';
 import { DeviceFloppy } from 'tabler-icons-react';
@@ -23,6 +24,9 @@ const TemplateInfoEditorCard = ({
   fetchTemplate,
   loading,
 }: templateInfoEditorCardProps) => {
+  const theme = useMantineTheme();
+  const { width } = useViewportSize();
+  const mobile = width <= theme.breakpoints.md;
   const form = useForm({
     validate: zodResolver(TemplateInfoEditSchema),
     initialValues: {
@@ -33,7 +37,6 @@ const TemplateInfoEditorCard = ({
   });
   const [componentLoading, setComponentLoading] = useState<boolean>(false);
   useEffect(() => {
-    console.log('Current Template', currentTemplate);
     form.setValues({
       title: currentTemplate?.title || '',
       description: currentTemplate?.description || '',
@@ -124,15 +127,18 @@ const TemplateInfoEditorCard = ({
               />
             </Grid.Col>
           </Grid>
-          <Button
-            type={'submit'}
-            color={'dark'}
-            size={'lg'}
-            leftIcon={<DeviceFloppy size={25} />}
-            loading={loading || componentLoading}
-          >
-            Actualizar Template
-          </Button>
+          <Stack align={'center'}>
+            <Button
+              type={'submit'}
+              color={'orange'}
+              radius={'lg'}
+              leftIcon={<DeviceFloppy size={25} />}
+              loading={loading || componentLoading}
+              fullWidth={mobile}
+            >
+              Actualizar Template
+            </Button>
+          </Stack>
         </Stack>
       </form>
     </Card>
