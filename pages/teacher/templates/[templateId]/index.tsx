@@ -52,7 +52,10 @@ const TemplateDetail: NextPage = () => {
       >
         {currentTab === 'createpages' ? (
           <NonSSRWrapper>
-            <TemplatePageDisplay />
+            <TemplatePageDisplay
+              currentTemplate={currentTemplate}
+              loading={loading}
+            />
           </NonSSRWrapper>
         ) : null}
         {currentTab === 'configuretemplate' ? (
