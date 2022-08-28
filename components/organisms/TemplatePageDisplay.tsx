@@ -2,6 +2,7 @@ import { Button, Menu } from '@mantine/core';
 import { useEffect, useState } from 'react';
 import { Notes, Plus, QuestionMark } from 'tabler-icons-react';
 import axiosInstance from '../../lib/constants/axiosInstance';
+import useUser from '../../lib/hooks/useUser';
 import ShowFailedNotification from '../../lib/utils/ShowFailedNotification';
 import page from '../../types/api_schemas/page';
 import templatePageDisplayProps from '../../types/component_schemas/templatePageDisplayProps';
@@ -15,6 +16,8 @@ const TemplatePageDisplay = ({
   currentTemplate,
   loading,
 }: templatePageDisplayProps) => {
+  const { user } = useUser();
+  const role_name = user?.role[0].role_name;
   const [pageList, setPageList] = useState<page[]>([]);
   const [componentLoading, setComponentLoading] = useState<boolean>(false);
   const [displayLearningContentCard, setDisplayLearningContentCard] =
@@ -64,57 +67,76 @@ const TemplatePageDisplay = ({
     <>
       <CustomLoadingOverlay visible={loading || componentLoading} />
       <CardHolder>
-        <CreateLearningContentCard
-          displayContent={displayLearningContentCard}
-          onClose={() => {
-            setDisplayLearningContentCard(false);
-          }}
-          currentTemplate={currentTemplate}
-        />
-        <CreatePracticeTestCard
-          displayContent={displayPracticeTestCard}
-          onClose={() => {
-            setDisplayPracticeTestCard(false);
-          }}
-          currentTemplate={currentTemplate}
-        />
+        {role_name === 'teacher' ? (
+          <>
+            <CreateLearningContentCard
+              displayContent={displayLearningContentCard}
+              onClose={() => {
+                setDisplayLearningContentCard(false);
+              }}
+              currentTemplate={currentTemplate}
+            />
+            <CreatePracticeTestCard
+              displayContent={displayPracticeTestCard}
+              onClose={() => {
+                setDisplayPracticeTestCard(false);
+              }}
+              currentTemplate={currentTemplate}
+            />
+          </>
+        ) : null}
+
         {pageList.length > 0
           ? pageList.map((page: page) => {
               if (page.learning_content) {
-                return <LearningContentCard key={page.id} page={page} />;
+                return (
+                  <LearningContentCard
+                    key={page.id}
+                    page={page}
+                    updatePageList={fetchTemplatePages}
+                  />
+                );
               }
               if (page.practice_test) {
-                return <PracticeTestCard key={page.id} page={page} />;
+                return (
+                  <PracticeTestCard
+                    key={page.id}
+                    page={page}
+                    updatePageList={fetchTemplatePages}
+                  />
+                );
               }
               return null;
             })
           : null}
-        <Menu>
-          <Menu.Target>
-            <Button
-              radius={'lg'}
-              color="orange"
-              leftIcon={<Plus size={25} />}
-              fullWidth
-            >
-              Nueva Página
-            </Button>
-          </Menu.Target>
-          <Menu.Dropdown>
-            <Menu.Item
-              onClick={openLearningContentCard}
-              icon={<Notes size={18} />}
-            >
-              Crear Contenido de Aprendizaje
-            </Menu.Item>
-            <Menu.Item
-              onClick={openPracticeTestCard}
-              icon={<QuestionMark size={18} />}
-            >
-              Crear Prueba de Práctica
-            </Menu.Item>
-          </Menu.Dropdown>
-        </Menu>
+        {role_name === 'teacher' ? (
+          <Menu>
+            <Menu.Target>
+              <Button
+                radius={'lg'}
+                color="orange"
+                leftIcon={<Plus size={25} />}
+                fullWidth
+              >
+                Nueva Página
+              </Button>
+            </Menu.Target>
+            <Menu.Dropdown>
+              <Menu.Item
+                onClick={openLearningContentCard}
+                icon={<Notes size={18} />}
+              >
+                Crear Contenido de Aprendizaje
+              </Menu.Item>
+              <Menu.Item
+                onClick={openPracticeTestCard}
+                icon={<QuestionMark size={18} />}
+              >
+                Crear Prueba de Práctica
+              </Menu.Item>
+            </Menu.Dropdown>
+          </Menu>
+        ) : null}
       </CardHolder>
     </>
   );
