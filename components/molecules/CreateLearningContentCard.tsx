@@ -55,7 +55,10 @@ const CreateLearningContentCard = ({
                 size={25}
                 color={theme.colors.gray[7]}
                 style={{ cursor: 'pointer' }}
-                onClick={onClose}
+                onClick={() => {
+                  form.reset();
+                  onClose();
+                }}
               />
             </Group>
             <form
@@ -71,6 +74,7 @@ const CreateLearningContentCard = ({
                       'Contenido de aprendizaje creado exitosamente',
                       `Se ha creado el contenido de aprendizaje "${response.data.data.learning_content.title}" exitosamente`
                     );
+                    form.reset();
                     onClose();
                   }
                 } catch (error: any) {

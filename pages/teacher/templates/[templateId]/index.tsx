@@ -7,7 +7,6 @@ import teacherTemplateTabList from '../../../../lib/constants/tabLists/teacherTe
 import TemplatePageDisplay from '../../../../components/organisms/TemplatePageDisplay';
 import TemplateInfoEditorCard from '../../../../components/organisms/TemplateInfoEditorCard';
 import TemplateAdaptationCard from '../../../../components/organisms/TemplateAdaptationCard';
-import TemplateInitialTestCard from '../../../../components/organisms/TemplateInitialTestCard';
 import TemplateRulesCard from '../../../../components/organisms/TemplateRulesCard';
 import NonSSRWrapper from '../../../../components/overlays/NonSSRWrapper';
 import template from '../../../../types/api_schemas/template';
@@ -67,11 +66,6 @@ const TemplateDetail: NextPage = () => {
                 fetchTemplate={fetchTemplate}
               />
               <TemplateAdaptationCard
-                currentTemplate={currentTemplate}
-                loading={loading}
-                fetchTemplate={fetchTemplate}
-              />
-              <TemplateInitialTestCard
                 currentTemplate={currentTemplate}
                 loading={loading}
                 fetchTemplate={fetchTemplate}
