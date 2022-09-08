@@ -33,6 +33,7 @@ const CreateTemplateModal = ({
       knowledge_weight: templateToUpdate
         ? templateToUpdate.knowledge_weight
         : 50,
+      leak_parameter: templateToUpdate ? templateToUpdate.leak_parameter : 0,
     },
   });
   useEffect(() => {
@@ -42,6 +43,7 @@ const CreateTemplateModal = ({
         description: templateToUpdate.description,
         default_knowledge: templateToUpdate.default_knowledge,
         knowledge_weight: templateToUpdate.knowledge_weight,
+        leak_parameter: templateToUpdate.leak_parameter,
       });
       return;
     }
@@ -120,7 +122,6 @@ const CreateTemplateModal = ({
           </Text>
           <Slider
             color={'orange'}
-            labelAlwaysOn
             marks={[
               { value: 0, label: '0' },
               { value: 25, label: '25' },
@@ -139,7 +140,6 @@ const CreateTemplateModal = ({
           </Text>
           <Slider
             color={'orange'}
-            labelAlwaysOn
             marks={[
               { value: 0, label: '0' },
               { value: 25, label: '25' },
@@ -151,6 +151,28 @@ const CreateTemplateModal = ({
             onChange={(value) => {
               form.setFieldValue('knowledge_weight', value);
             }}
+            disabled={loading}
+          />
+          <Text weight="bold" size="md">
+            Parámetro de Fuga
+          </Text>
+          <Slider
+            color={'orange'}
+            marks={[
+              { value: 0, label: '0' },
+              { value: 1, label: '1' },
+              { value: 2, label: '2' },
+              { value: 3, label: '3' },
+              { value: 4, label: '4' },
+              { value: 5, label: '5' },
+            ]}
+            step={0.1}
+            value={form.values.leak_parameter}
+            onChange={(value) => {
+              form.setFieldValue('leak_parameter', value);
+            }}
+            min={0}
+            max={5}
             disabled={loading}
           />
           <Grid style={{ width: '100%' }}>

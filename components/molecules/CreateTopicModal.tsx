@@ -23,7 +23,7 @@ import ShowSuccessfullCreate from '../../lib/utils/ShowSuccessfullCreate';
 interface CreateTopicModalProps extends ModalProps {
   topicToUpdate?: topic;
 }
-const TopicModal = (props: CreateTopicModalProps) => {
+const CreateTopicModal = (props: CreateTopicModalProps) => {
   const { topicToUpdate, ...modalProps } = props;
   const [loading, setLoading] = useState(false);
   const form = useForm({
@@ -32,6 +32,7 @@ const TopicModal = (props: CreateTopicModalProps) => {
       title: topicToUpdate ? topicToUpdate.title : '',
       icon_name: topicToUpdate ? topicToUpdate.icon_name : '',
       default_knowledge: topicToUpdate ? topicToUpdate.default_knowledge : 50,
+      leak_parameter: topicToUpdate ? topicToUpdate.leak_parameter : 0,
     },
   });
   useEffect(() => {
@@ -40,6 +41,7 @@ const TopicModal = (props: CreateTopicModalProps) => {
         title: topicToUpdate.title,
         icon_name: topicToUpdate.icon_name,
         default_knowledge: topicToUpdate.default_knowledge,
+        leak_parameter: topicToUpdate ? topicToUpdate.leak_parameter : 0,
       });
       return;
     }
@@ -104,7 +106,6 @@ const TopicModal = (props: CreateTopicModalProps) => {
           </Text>
           <Slider
             color={'orange'}
-            labelAlwaysOn
             marks={[
               { value: 0, label: '0' },
               { value: 25, label: '25' },
@@ -116,6 +117,28 @@ const TopicModal = (props: CreateTopicModalProps) => {
             onChange={(value) => {
               form.setFieldValue('default_knowledge', value);
             }}
+            disabled={loading}
+          />
+          <Text weight="bold" size="md">
+            Parámetro de Fuga
+          </Text>
+          <Slider
+            color={'orange'}
+            marks={[
+              { value: 0, label: '0' },
+              { value: 1, label: '1' },
+              { value: 2, label: '2' },
+              { value: 3, label: '3' },
+              { value: 4, label: '4' },
+              { value: 5, label: '5' },
+            ]}
+            step={0.1}
+            value={form.values.leak_parameter}
+            onChange={(value) => {
+              form.setFieldValue('leak_parameter', value);
+            }}
+            min={0}
+            max={5}
             disabled={loading}
           />
           <Select
@@ -147,4 +170,4 @@ const TopicModal = (props: CreateTopicModalProps) => {
   );
 };
 
-export default TopicModal;
+export default CreateTopicModal;

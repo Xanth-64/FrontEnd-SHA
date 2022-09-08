@@ -146,8 +146,12 @@ const CreateTemplateCard = ({ topic }: createTemplateCardProps) => {
       </Stack>
       <CreateTemplateModal
         opened={showModal}
+        size={'xl'}
         templateToUpdate={templateToUpdate}
         topicId={topic}
+        overlayBlur={4}
+        padding={'xl'}
+        centered
         onClose={() => {
           setShowModal(false);
           setTemplateToUpdate(undefined);

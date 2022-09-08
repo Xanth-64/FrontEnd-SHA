@@ -18,6 +18,10 @@ const TemplateSchema = z.object({
     .number()
     .min(0, 'El conocimiento por defecto debe ser mayor o igual a 0')
     .max(100, 'El conocimiento por defecto debe ser menor o igual a 100'),
+  leak_parameter: z
+    .number()
+    .min(0, 'El parámetro de fuga debe ser mayor o igual a 0')
+    .max(5, 'El parámetro de fuga debe ser menor o igual a 5'),
 });
 
 export default TemplateSchema;
