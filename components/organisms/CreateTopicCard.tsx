@@ -15,7 +15,7 @@ import TopicTable from '../molecules/TopicTable';
 import axiosInstance from '../../lib/constants/axiosInstance';
 import topic from '../../types/api_schemas/topic';
 import { Plus } from 'tabler-icons-react';
-import TopicModal from '../molecules/CreateTopicModal';
+import CreateTopicModal from '../molecules/CreateTopicModal';
 import CustomLoadingOverlay from '../overlays/CustomLoadingOverlay';
 const CreateTopicCard = () => {
   const theme = useMantineTheme();
@@ -117,10 +117,9 @@ const CreateTopicCard = () => {
           </Button>
         </Stack>
       </Stack>
-      <TopicModal
+      <CreateTopicModal
         opened={showModal}
         size={'xl'}
-        withCloseButton={false}
         onClose={() => {
           setShowModal(false);
           setTopicToUpdate(undefined);

@@ -6,6 +6,7 @@ type template = {
   image_url?: string;
   knowledge_weight: number;
   relative_position: number;
+  leak_parameter: number;
   title: string;
   topic_id: string;
 };

@@ -6,6 +6,7 @@ type topic = {
   successors?: topic[];
   predecessors?: topic[];
   id?: string;
+  leak_parameter?: number;
   created_at?: string;
 };
 export default topic;
