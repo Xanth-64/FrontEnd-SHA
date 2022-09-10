@@ -13,6 +13,13 @@ const PracticeTestCreationSchema = z
         50,
         'El título de la prueba de práctica no puede tener más de 50 caracteres'
       ),
+    adaptation_weight: z
+      .number()
+      .min(0, 'La ponderación adaptativa debe ser mayor o igual a 0')
+      .max(100, 'La ponderación adaptativa debe ser menor o igual a 100'),
+    approval_score: z
+      .number()
+      .min(1, 'El puntaje de aprobación debe ser mayor o igual a 1'),
     show_on_init: z.boolean(),
     test_questions: z
       .array(
@@ -34,6 +41,9 @@ const PracticeTestCreationSchema = z
               .number()
               .min(1, 'El puntaje debe ser mayor a 0')
               .max(5, 'El puntaje debe ser menor o igual a 5'),
+            question_hint: z
+              .string()
+              .max(250, 'La pista no puede tener más de 250 caracteres'),
             answer_alternatives: z.array(
               z.object({
                 alternative_text: z
@@ -81,6 +91,20 @@ const PracticeTestCreationSchema = z
     {
       message: 'La prueba de práctica debe tener al menos una pregunta',
       path: ['title'],
+    }
+  )
+  .refine(
+    (practiceTest) => {
+      let total_score: number = 0;
+      practiceTest.test_questions.forEach((test_question) => {
+        total_score = total_score + test_question.question_score;
+      });
+      return practiceTest.approval_score <= total_score;
+    },
+    {
+      message:
+        'El puntaje de aprobación debe ser menor o igual que el total de los puntajes de las preguntas',
+      path: ['approval_score'],
     }
   );
 

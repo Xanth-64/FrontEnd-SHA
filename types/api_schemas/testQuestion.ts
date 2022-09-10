@@ -8,7 +8,9 @@ type testQuestion = {
   relative_position: number;
   question_score: number;
   practice_test_id: string;
+  question_hint: string;
   answer_alternatives: answerAlternative[];
+
 };
 
 export default testQuestion;
