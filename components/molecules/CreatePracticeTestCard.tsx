@@ -16,6 +16,7 @@ import {
   Checkbox,
   Divider,
   Grid,
+  NumberInput,
 } from '@mantine/core';
 import { useForm, zodResolver } from '@mantine/form';
 import { useViewportSize } from '@mantine/hooks';
@@ -45,6 +46,12 @@ export const CreatePracticeTestCard = ({
       show_on_init: currentPracticeTest
         ? currentPracticeTest.show_on_init
         : false,
+      approval_score: currentPracticeTest
+        ? currentPracticeTest.approval_score
+        : 1,
+      adaptation_weight: currentPracticeTest
+        ? currentPracticeTest.adaptation_weight
+        : 50,
       test_questions: currentPracticeTest?.test_questions
         ? currentPracticeTest.test_questions
         : ([] as any[]),
@@ -55,6 +62,12 @@ export const CreatePracticeTestCard = ({
       form.setValues({
         title: currentPracticeTest.title,
         show_on_init: currentPracticeTest.show_on_init,
+        approval_score: currentPracticeTest
+          ? currentPracticeTest.approval_score
+          : 1,
+        adaptation_weight: currentPracticeTest
+          ? currentPracticeTest.adaptation_weight
+          : 50,
         test_questions: currentPracticeTest?.test_questions
           ? currentPracticeTest.test_questions
           : [],
@@ -152,6 +165,34 @@ export const CreatePracticeTestCard = ({
                   label={'Utilizar como Prueba de Nivel Inicial'}
                   color={'orange'}
                   {...form.getInputProps('show_on_init')}
+                />
+                <NumberInput
+                  label="Puntaje de Aprobación"
+                  description="Puntaje que usted consideraría como aprobatorio para esta prueba"
+                  size={'md'}
+                  {...form.getInputProps('approval_score')}
+                  disabled={componentLoading}
+                />
+                <Text weight="bold" size="md">
+                  Ponderación Adaptativa
+                </Text>
+                <Slider
+                  color={'orange'}
+                  marks={[
+                    { value: 0, label: '0' },
+                    { value: 20, label: '20' },
+                    { value: 40, label: '40' },
+                    { value: 60, label: '60' },
+                    { value: 80, label: '80' },
+                    { value: 100, label: '100' },
+                  ]}
+                  min={0}
+                  max={100}
+                  value={form.values.adaptation_weight}
+                  onChange={(value) => {
+                    form.setFieldValue('adaptation_weight', value);
+                  }}
+                  disabled={componentLoading}
                 />
                 <Text weight="bold" size="md">
                   Contenido de la Prueba
@@ -261,6 +302,17 @@ export const CreatePracticeTestCard = ({
                               );
                             }}
                             disabled={componentLoading}
+                          />
+                          <TextInput
+                            label="Pista"
+                            description="Pista opcional para la pregunta."
+                            disabled={componentLoading}
+                            placeholder="Recuerda que el código se ejecuta desde arriba hacia abajo."
+                            size={'sm'}
+                            maxRows={3}
+                            {...form.getInputProps(
+                              `test_questions.${index}.question_hint`
+                            )}
                           />
                           <Group spacing={'lg'}>
                             <Text weight="bold" size="sm">
