@@ -43,6 +43,14 @@ export default function App(props: AppProps) {
             return;
           }
         }
+        if (pageProps.expected_role === 'student') {
+          if (
+            !user.user.vark_completed &&
+            router.route.search('vark_test') === -1
+          ) {
+            router.push('/student/vark_test');
+          }
+        }
       } else {
         if (user) {
           router.push(`/${user.role[0].role_name}`);
@@ -50,7 +58,7 @@ export default function App(props: AppProps) {
       }
     }
   };
-  useEffect(validateAuth, [user, isLoading]);
+  useEffect(validateAuth, [user, isLoading, router.route]);
   return (
     <>
       <Head>

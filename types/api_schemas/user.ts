@@ -1,4 +1,4 @@
-import role from "./role";
+import role from './role';
 
 type user = {
   email: string;
@@ -7,6 +7,13 @@ type user = {
   created_at?: string;
   image_url?: string;
   last_name?: string;
-  role? : role[];
+  role?: role[];
+  vark_completed: boolean;
+  learning_style?: {
+    aural: number;
+    kinesthetic: number;
+    textual: number;
+    visual: number;
+  };
 };
 export default user;
