@@ -25,7 +25,7 @@ const SignupModal = (props: SignupModalProps) => {
   const { userRedirect, ...modalProps } = props;
   const [loading, setLoading] = useState(false);
   const { mutate } = useSWRConfig();
-  const { user } = useUser();
+  const { user, isLoading } = useUser();
   const form = useForm({
     validate: zodResolver(SignupSchema),
     initialValues: {
@@ -66,7 +66,12 @@ const SignupModal = (props: SignupModalProps) => {
                 maxAge: response.data.data.expiresIn,
               });
               await mutate('current_user/');
-              router.push(`${user?.role[0].role_name}`);
+              if (user) {
+                router.push(`/${user?.role[0].role_name}`);
+              }
+              if (loading) {
+                router.push('home/user_auth_buffer');
+              }
               return;
             }
           } catch (error: any) {
