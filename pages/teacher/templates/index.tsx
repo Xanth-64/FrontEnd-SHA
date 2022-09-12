@@ -13,7 +13,7 @@ const Templates: NextPage = () => {
         getActiveTopic={currentTopic}
         setActiveTopic={setCurrentTopic}
       >
-        {currentTopic ? <CreateTemplateCard topic={currentTopic}/> : null}
+        {currentTopic ? <CreateTemplateCard topic={currentTopic} /> : null}
       </SelectTopicCard>
     </CardHolder>
   );

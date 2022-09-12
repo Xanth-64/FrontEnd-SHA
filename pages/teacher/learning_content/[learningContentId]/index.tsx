@@ -3,9 +3,10 @@ import type { GetServerSidePropsContext } from 'next';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import UpdateLearningContentCard from '../../../../components/molecules/UpdateLearningContentCard';
+import CreateAdaptativeEventCard from '../../../../components/organisms/CreateAdaptativeEventCard';
 import PageInteractionsCard from '../../../../components/organisms/PageInteractionsCard';
-import PageRulesCard from '../../../../components/organisms/PageRulesCard';
 import TopNavigation from '../../../../components/organisms/TopNavigation';
+import CustomLoadingOverlay from '../../../../components/overlays/CustomLoadingOverlay';
 import NonSSRWrapper from '../../../../components/overlays/NonSSRWrapper';
 import CardHolder from '../../../../components/templates/CardHolder';
 import axiosInstance from '../../../../lib/constants/axiosInstance';
@@ -45,6 +46,7 @@ const PageDisplay: NextPage = () => {
   useEffect(fetchLearningContent, [learningContentId]);
   return (
     <CardHolder>
+      <CustomLoadingOverlay visible={loading} />
       <TopNavigation
         links={teacherPageTabList}
         getActiveTab={currentTab}
@@ -67,10 +69,26 @@ const PageDisplay: NextPage = () => {
                 loading={loading}
                 fetchLearningContent={fetchLearningContent}
               />
-              <PageRulesCard
-                currentLearningContent={currentLearningContent}
-                loading={loading}
-                fetchLearningContent={fetchLearningContent}
+              <CreateAdaptativeEventCard
+                adaptative_object_id={
+                  currentLearningContent?.page?.adaptative_object_id
+                }
+                supported_adaptative_events={[
+                  'HIGHLIGHT',
+                  'OBSCURE',
+                  'DISABLE',
+                  'HIDE',
+                  'NOTIFY_POSITIVE',
+                  'NOTIFY_NEGATIVE',
+                ]}
+                supported_adaptative_variables={[
+                  'TOPIC_KNOWLEDGE',
+                  'TEMPLATE_KNOWLEDGE',
+                  'LEARNING_STYLE_AURAL_AFFINITY',
+                  'LEARNING_STYLE_VISUAL_AFFINITY',
+                  'LEARNING_STYLE_READING_AFFINITY',
+                  'LEARNING_STYLE_KINESTHETIC_AFFINITY',
+                ]}
               />
             </NonSSRWrapper>
           </>

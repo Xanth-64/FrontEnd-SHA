@@ -6,6 +6,7 @@ type createPracticeTestCardProps = {
   onClose?: () => void;
   currentTemplate?: template;
   currentPracticeTest?: practiceTest;
+  refetchData?: () => void;
 };
 
 export default createPracticeTestCardProps;

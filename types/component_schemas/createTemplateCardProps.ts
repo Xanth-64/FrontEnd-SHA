@@ -1,5 +1,5 @@
 type createTemplateCardProps = {
-  topic: string;
+  topic?: string;
 };
 
 export default createTemplateCardProps;

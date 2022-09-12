@@ -8,6 +8,7 @@ type page = {
   template_id: string;
   learning_content: learningContent | null;
   practice_test: practiceTest | null;
+  adaptative_object_id?: string;
 };
 
 export default page;

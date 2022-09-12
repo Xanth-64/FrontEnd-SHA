@@ -10,7 +10,7 @@ type testQuestion = {
   practice_test_id: string;
   question_hint: string;
   answer_alternatives: answerAlternative[];
-
+  adaptative_object_id?: string;
 };
 
 export default testQuestion;
