@@ -7,12 +7,12 @@ import teacherTemplateTabList from '../../../../lib/constants/tabLists/teacherTe
 import TemplatePageDisplay from '../../../../components/organisms/TemplatePageDisplay';
 import TemplateInfoEditorCard from '../../../../components/organisms/TemplateInfoEditorCard';
 import TemplateAdaptationCard from '../../../../components/organisms/TemplateAdaptationCard';
-import TemplateRulesCard from '../../../../components/organisms/TemplateRulesCard';
 import NonSSRWrapper from '../../../../components/overlays/NonSSRWrapper';
 import template from '../../../../types/api_schemas/template';
 import { useRouter } from 'next/router';
 import ShowFailedNotification from '../../../../lib/utils/ShowFailedNotification';
 import axiosInstance from '../../../../lib/constants/axiosInstance';
+import CreateAdaptativeEventCard from '../../../../components/organisms/CreateAdaptativeEventCard';
 const TemplateDetail: NextPage = () => {
   const [currentTab, setCurrentTab] = useState<string>(
     teacherTemplateTabList[0].value
@@ -76,7 +76,25 @@ const TemplateDetail: NextPage = () => {
         {currentTab === 'configureadaptation' ? (
           <>
             <NonSSRWrapper>
-              <TemplateRulesCard />
+              <CreateAdaptativeEventCard
+                adaptative_object_id={currentTemplate?.adaptative_object_id}
+                supported_adaptative_events={[
+                  'HIGHLIGHT',
+                  'OBSCURE',
+                  'DISABLE',
+                  'HIDE',
+                  'NOTIFY_POSITIVE',
+                  'NOTIFY_NEGATIVE',
+                ]}
+                supported_adaptative_variables={[
+                  'TOPIC_KNOWLEDGE',
+                  'TEMPLATE_KNOWLEDGE',
+                  'LEARNING_STYLE_AURAL_AFFINITY',
+                  'LEARNING_STYLE_VISUAL_AFFINITY',
+                  'LEARNING_STYLE_READING_AFFINITY',
+                  'LEARNING_STYLE_KINESTHETIC_AFFINITY',
+                ]}
+              />
             </NonSSRWrapper>
           </>
         ) : null}

@@ -1,5 +1,5 @@
 import topNavigationTab from '../../../types/component_schemas/topNavigationTab';
-import { SquarePlus, ArrowsLeftRight } from 'tabler-icons-react';
+import { SquarePlus, ArrowsLeftRight, Ruler2 } from 'tabler-icons-react';
 
 const teacherTopicTabList: topNavigationTab[] = [
   {
@@ -11,6 +11,11 @@ const teacherTopicTabList: topNavigationTab[] = [
     label: 'Gestionar Prelaciones',
     value: 'manageprecedences',
     icon: ArrowsLeftRight,
+  },
+  {
+    label: 'Configurar Adaptación',
+    value: 'configureadaptation',
+    icon: Ruler2,
   },
 ];
 

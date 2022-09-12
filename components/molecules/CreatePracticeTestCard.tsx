@@ -34,6 +34,7 @@ export const CreatePracticeTestCard = ({
   onClose,
   currentTemplate,
   currentPracticeTest,
+  refetchData,
 }: createPracticeTestCardProps) => {
   const [componentLoading, setComponentLoading] = useState<boolean>(false);
   const theme = useMantineTheme();
@@ -117,6 +118,9 @@ export const CreatePracticeTestCard = ({
                     form.reset();
                     onClose();
                   }
+                  if (refetchData) {
+                    refetchData();
+                  }
                 } catch (error: any) {
                   if (error?.response?.status === 400) {
                     form.setErrors({
@@ -165,6 +169,7 @@ export const CreatePracticeTestCard = ({
                   label={'Utilizar como Prueba de Nivel Inicial'}
                   color={'orange'}
                   {...form.getInputProps('show_on_init')}
+                  value={form.values.show_on_init}
                 />
                 <NumberInput
                   label="Puntaje de Aprobación"

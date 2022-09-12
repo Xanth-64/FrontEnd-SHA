@@ -9,6 +9,7 @@ type template = {
   leak_parameter: number;
   title: string;
   topic_id: string;
+  adaptative_object_id?: string;
 };
 
 export default template;

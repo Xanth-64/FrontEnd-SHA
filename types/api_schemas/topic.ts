@@ -8,5 +8,6 @@ type topic = {
   id?: string;
   leak_parameter?: number;
   created_at?: string;
+  adaptative_object_id?: string;
 };
 export default topic;
