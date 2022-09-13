@@ -20,7 +20,7 @@ const mapEventVariableNames = (
     case 'LEARNING_STYLE_READING_AFFINITY':
       return 'Afinidad al Estilo de Aprendizaje de Lectura/Escritura';
     case 'LEARNING_STYLE_KINESTHETIC_AFFINITY':
-      return 'Afinidad al Estilo de Aprendizaje Kinestético';
+      return 'Afinidad al Estilo de Aprendizaje Kinestésico';
     default:
       return `Nombre de Variable Desconocido: ${variableName}`;
   }

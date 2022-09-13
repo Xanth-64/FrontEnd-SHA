@@ -10,7 +10,6 @@ import {
 } from '@mantine/core';
 import { useViewportSize } from '@mantine/hooks';
 import {
-  Adjustments,
   ArrowDownCircle,
   ArrowUpCircle,
   Settings,

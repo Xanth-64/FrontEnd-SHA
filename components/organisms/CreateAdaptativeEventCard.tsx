@@ -91,6 +91,10 @@ const CreateAdaptativeEventCard = ({
         supported_adaptative_events={supported_adaptative_events}
         supported_adaptative_variables={supported_adaptative_variables}
         adaptativeObjectId={adaptative_object_id}
+        size={'xl'}
+        overlayBlur={4}
+        padding={'xl'}
+        centered
       />
     </Card>
   );

@@ -28,7 +28,7 @@ const UpdateLearningContentCard = ({
   }, [currentLearningContent]);
   return (
     <Card shadow={'sm'} radius={'md'}>
-      <CustomLoadingOverlay visible={loading} />
+      <CustomLoadingOverlay visible={componentLoading} />
       <Stack spacing={'xl'} style={{ padding: '36px 28px' }}>
         <form
           onSubmit={form.onSubmit(async (values) => {

@@ -43,7 +43,8 @@ const PracticeTestCreationSchema = z
               .max(5, 'El puntaje debe ser menor o igual a 5'),
             question_hint: z
               .string()
-              .max(250, 'La pista no puede tener más de 250 caracteres'),
+              .max(250, 'La pista no puede tener más de 250 caracteres')
+              .optional(),
             answer_alternatives: z.array(
               z.object({
                 alternative_text: z
