@@ -20,13 +20,9 @@ const CustomAppshell = ({ children }: Props) => {
       footer={<AppFooter />}
       navbar={user || isLoading ? <AppNavbar /> : undefined}
       style={{ height: '100%' }}
-      // fixed
       zIndex={100}
       styles={(theme) => {
         return {
-          // body: {
-          //   height: '100%',
-          // },
           main: {
             height: '100%',
             backgroundColor:

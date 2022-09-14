@@ -4,7 +4,7 @@ const TemplateInfoEditSchema = z.object({
   title: z
     .string({ required_error: 'El título del template es requerido' })
     .min(8, 'El título del template debe tener al menos 8 caracteres')
-    .max(30, 'El título del template no puede tener más de 30 caracteres')
+    .max(50, 'El título del template no puede tener más de 50 caracteres')
     .trim(),
   description: z
     .string()
