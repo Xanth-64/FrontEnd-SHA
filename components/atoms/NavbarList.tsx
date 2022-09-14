@@ -1,5 +1,5 @@
 import navElement from '../../types/component_schemas/navElement';
-import { Stack, ThemeIcon, Text, Grid } from '@mantine/core';
+import { Stack, ThemeIcon, Text, Grid, Loader, Center } from '@mantine/core';
 import { v4 } from 'uuid';
 import { useRouter } from 'next/router';
 type Props = {
@@ -13,6 +13,11 @@ const NavbarList = (props: Props) => {
   const { displayNavbar, toggleDisplay } = useNavbarContext();
   return (
     <Stack spacing="md" style={{ width: '100%', padding: '10px' }}>
+      {navElementList.length === 0 ? (
+        <Center>
+          <Loader color={'orange'} />
+        </Center>
+      ) : null}
       {navElementList.map((element: navElement) => {
         return (
           <Grid
