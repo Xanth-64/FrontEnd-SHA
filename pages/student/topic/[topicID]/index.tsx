@@ -1,8 +1,17 @@
 import type { NextPage } from 'next';
 import type { GetServerSidePropsContext } from 'next';
+import { useRouter } from 'next/router';
+import StudentTemplateCardDisplay from '../../../../components/organisms/StudentTemplateCardDisplay';
+import NonSSRWrapper from '../../../../components/overlays/NonSSRWrapper';
 
 const Topic: NextPage = () => {
-  return <h1>Topic Screen</h1>;
+  const router = useRouter();
+  const { topicID } = router.query;
+  return (
+    <NonSSRWrapper>
+      <StudentTemplateCardDisplay topicId={topicID} />
+    </NonSSRWrapper>
+  );
 };
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
