@@ -80,9 +80,14 @@ const PracticeTestCard = ({ page, updatePageList }: practiceTestCardProps) => {
     setComponentLoading(false);
   };
   return (
-    <Card shadow={'sm'} radius={'md'} ref={ref}>
+    <Card
+      shadow={'sm'}
+      radius={'md'}
+      ref={ref}
+      style={{ padding: '36px 28px' }}
+    >
       <CustomLoadingOverlay visible={componentLoading} />
-      <Stack spacing={'xl'}>
+      <Stack spacing={'xl'} style={{ padding: '36px 28px' }}>
         <Group position={'apart'}>
           <Title order={3}>
             Prueba de Práctica: {page.practice_test?.title}

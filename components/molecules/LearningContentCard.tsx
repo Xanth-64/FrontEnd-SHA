@@ -72,9 +72,14 @@ const LearningContentCard = ({
     setComponentLoading(false);
   };
   return (
-    <Card shadow={'sm'} radius={'md'} ref={ref}>
+    <Card
+      shadow={'sm'}
+      radius={'md'}
+      ref={ref}
+      style={{ padding: '36px 28px' }}
+    >
       <CustomLoadingOverlay visible={componentLoading} />
-      <Stack spacing={'xl'}>
+      <Stack spacing={'xl'} style={{ padding: '36px 28px' }}>
         <Group position={'apart'}>
           <Title order={3}>{page.learning_content?.title}</Title>
           {role_name === 'teacher' ? (

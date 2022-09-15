@@ -38,7 +38,12 @@ const StudentTemplateCardDisplay = ({
   return (
     <CardHolder>
       {templateList.map((template) => (
-        <StudentTemplateCard key={template.id} template={template} />
+        <StudentTemplateCard
+          key={template.id}
+          template={template}
+          displayHeaderImage
+          displayNavigationButton
+        />
       ))}
     </CardHolder>
   );
