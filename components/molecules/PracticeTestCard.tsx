@@ -13,7 +13,7 @@ import {
 } from '@mantine/core';
 import { useHover } from '@mantine/hooks';
 import { useRouter } from 'next/router';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
   ArrowDown,
   ArrowUp,
@@ -25,6 +25,7 @@ import axiosInstance from '../../lib/constants/axiosInstance';
 import useUser from '../../lib/hooks/useUser';
 import ShowFailedNotification from '../../lib/utils/ShowFailedNotification';
 import ShowSuccessfullCreate from '../../lib/utils/ShowSuccessfullCreate';
+import testAttempt from '../../types/api_schemas/testAttempt';
 import practiceTestCardProps from '../../types/component_schemas/practiceTestCardProps';
 import CustomLoadingOverlay from '../overlays/CustomLoadingOverlay';
 
@@ -34,6 +35,8 @@ const PracticeTestCard = ({ page, updatePageList }: practiceTestCardProps) => {
   const { hovered, ref } = useHover();
   const router = useRouter();
   const [componentLoading, setComponentLoading] = useState<boolean>(false);
+  const [currentPracticeTest, setCurrentPracticeTestAttempt] =
+    useState<testAttempt>();
   const theme = useMantineTheme();
   const deletePage = async () => {
     setComponentLoading(true);
@@ -79,6 +82,34 @@ const PracticeTestCard = ({ page, updatePageList }: practiceTestCardProps) => {
     }
     setComponentLoading(false);
   };
+  const fetchTestData = () => {
+    const inner_function = async () => {
+      if (page.practice_test) {
+        setComponentLoading(true);
+        try {
+          const { data } = await axiosInstance.get(
+            '/test_attempt/by_test_id/',
+            {
+              params: {
+                practice_test_id: page.practice_test?.id,
+              },
+            }
+          );
+          if (data?.data?.practice_test) {
+            setCurrentPracticeTestAttempt(data.data);
+          }
+        } catch (error: any) {
+          ShowFailedNotification(
+            'Error recuperando el intento de prueba realizado.',
+            'Ocurrió un error inesperado recuperando el intento de prueba realizado. Por favor, intente nuevamente.'
+          );
+        }
+        setComponentLoading(false);
+      }
+    };
+    inner_function();
+  };
+  useEffect(fetchTestData, [page]);
   return (
     <Card
       shadow={'sm'}
@@ -147,12 +178,18 @@ const PracticeTestCard = ({ page, updatePageList }: practiceTestCardProps) => {
                 router.push(`/student/test/${page.practice_test?.id}`);
               }}
             >
-              Presentar Prueba
+              {currentPracticeTest ? 'Ver Corrección' : 'Presentar Prueba'}
             </Button>
             <Text size="sm" mt={7} align={'center'}>
               Cantidad de Preguntas:{' '}
               {page.practice_test?.test_questions?.length}
             </Text>
+            {currentPracticeTest ? (
+              <Text size={'sm'} align={'center'} weight={'bold'}>
+                Puntaje Obtenido: {currentPracticeTest.acquired_score}/{' '}
+                {currentPracticeTest.practice_test.total_score}
+              </Text>
+            ) : null}
           </Stack>
         </Card>
       </Stack>
