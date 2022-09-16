@@ -5,6 +5,7 @@ type practiceTest = {
   id: string;
   created_at: string;
   title: string;
+  total_score: number;
   show_on_init: boolean;
   page_id?: string;
   page?: page;
