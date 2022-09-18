@@ -187,7 +187,6 @@ const CreateInteractionModal = ({
             ]}
             allowDeselect={true}
             searchable
-            dropdownPosition={'bottom'}
             withinPortal
             {...form.getInputProps('learning_style_attribute')}
             disabled={componentLoading}

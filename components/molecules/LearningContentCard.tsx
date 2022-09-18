@@ -18,6 +18,7 @@ import ShowFailedNotification from '../../lib/utils/ShowFailedNotification';
 import ShowSuccessfullCreate from '../../lib/utils/ShowSuccessfullCreate';
 import learningContentCardProps from '../../types/component_schemas/learningContentCardProps';
 import CustomLoadingOverlay from '../overlays/CustomLoadingOverlay';
+import MeasurableInteractionDetectionWrapper from '../overlays/MeasurableInteractionDetectionWrapper';
 const LearningContentCard = ({
   page,
   updatePageList,
@@ -72,73 +73,77 @@ const LearningContentCard = ({
     setComponentLoading(false);
   };
   return (
-    <Card
-      shadow={'sm'}
-      radius={'md'}
-      ref={ref}
-      style={{ padding: '36px 28px' }}
+    <MeasurableInteractionDetectionWrapper
+      learningContent={page.learning_content}
     >
-      <CustomLoadingOverlay visible={componentLoading} />
-      <Stack spacing={'xl'} style={{ padding: '36px 28px' }}>
-        <Group position={'apart'}>
-          <Title order={3}>{page.learning_content?.title}</Title>
-          {role_name === 'teacher' ? (
-            <Transition mounted={hovered} transition={'fade'}>
-              {(styles) => {
-                return (
-                  <Group position={'right'} style={styles}>
-                    <UnstyledButton
-                      onClick={() => {
-                        switchPagePosition('up');
-                      }}
-                    >
-                      <ThemeIcon color={'gray'} variant={'light'} size={'lg'}>
-                        <ArrowUp size={25} />
-                      </ThemeIcon>
-                    </UnstyledButton>
-                    <UnstyledButton
-                      onClick={() => {
-                        switchPagePosition('down');
-                      }}
-                    >
-                      <ThemeIcon color={'gray'} variant={'light'} size={'lg'}>
-                        <ArrowDown size={25} />
-                      </ThemeIcon>
-                    </UnstyledButton>
-                    <UnstyledButton onClick={deletePage}>
-                      <ThemeIcon color={'red'} variant={'light'} size={'lg'}>
-                        <Trash size={25} />
-                      </ThemeIcon>
-                    </UnstyledButton>
-                    <UnstyledButton
-                      onClick={() => {
-                        router.push(
-                          `/teacher/learning_content/${page.learning_content?.id}`
-                        );
-                      }}
-                    >
-                      <ThemeIcon color={'gray'} variant={'light'} size={'lg'}>
-                        <Edit size={25} />
-                      </ThemeIcon>
-                    </UnstyledButton>
-                  </Group>
-                );
-              }}
-            </Transition>
-          ) : null}
-        </Group>
+      <Card
+        shadow={'sm'}
+        radius={'md'}
+        ref={ref}
+        style={{ padding: '36px 28px' }}
+      >
+        <CustomLoadingOverlay visible={componentLoading} />
+        <Stack spacing={'xl'} style={{ padding: '36px 28px' }}>
+          <Group position={'apart'}>
+            <Title order={3}>{page.learning_content?.title}</Title>
+            {role_name === 'teacher' ? (
+              <Transition mounted={hovered} transition={'fade'}>
+                {(styles) => {
+                  return (
+                    <Group position={'right'} style={styles}>
+                      <UnstyledButton
+                        onClick={() => {
+                          switchPagePosition('up');
+                        }}
+                      >
+                        <ThemeIcon color={'gray'} variant={'light'} size={'lg'}>
+                          <ArrowUp size={25} />
+                        </ThemeIcon>
+                      </UnstyledButton>
+                      <UnstyledButton
+                        onClick={() => {
+                          switchPagePosition('down');
+                        }}
+                      >
+                        <ThemeIcon color={'gray'} variant={'light'} size={'lg'}>
+                          <ArrowDown size={25} />
+                        </ThemeIcon>
+                      </UnstyledButton>
+                      <UnstyledButton onClick={deletePage}>
+                        <ThemeIcon color={'red'} variant={'light'} size={'lg'}>
+                          <Trash size={25} />
+                        </ThemeIcon>
+                      </UnstyledButton>
+                      <UnstyledButton
+                        onClick={() => {
+                          router.push(
+                            `/teacher/learning_content/${page.learning_content?.id}`
+                          );
+                        }}
+                      >
+                        <ThemeIcon color={'gray'} variant={'light'} size={'lg'}>
+                          <Edit size={25} />
+                        </ThemeIcon>
+                      </UnstyledButton>
+                    </Group>
+                  );
+                }}
+              </Transition>
+            ) : null}
+          </Group>
 
-        <TypographyStylesProvider>
-          {page.learning_content?.content ? (
-            <div
-              dangerouslySetInnerHTML={{
-                __html: page.learning_content.content,
-              }}
-            />
-          ) : null}
-        </TypographyStylesProvider>
-      </Stack>
-    </Card>
+          <TypographyStylesProvider>
+            {page.learning_content?.content ? (
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: page.learning_content.content,
+                }}
+              />
+            ) : null}
+          </TypographyStylesProvider>
+        </Stack>
+      </Card>
+    </MeasurableInteractionDetectionWrapper>
   );
 };
 
