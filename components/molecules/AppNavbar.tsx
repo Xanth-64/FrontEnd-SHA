@@ -28,11 +28,17 @@ const AppNavbar = () => {
   const colors = Object.keys(theme.colors);
   useEffect(() => {
     const inner_function = async () => {
-      if (user?.role[0].role_name === 'teacher') {
+      if (
+        user?.role[0].role_name === 'teacher' &&
+        !router.pathname.includes('student')
+      ) {
         setNavList(teacherNavList);
         return;
       }
-      if (user?.role[0].role_name === 'student') {
+      if (
+        user?.role[0].role_name === 'student' ||
+        router.pathname.includes('student')
+      ) {
         const { data } = await axiosInstance.get('/topics/with_pagination', {
           params: {
             sort_key: 'relative_position',
