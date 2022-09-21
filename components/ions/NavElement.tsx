@@ -4,6 +4,7 @@ import {
   HoverCard,
   LoadingOverlay,
   Overlay,
+  Skeleton,
   Stack,
   Text,
   ThemeIcon,
@@ -30,9 +31,11 @@ const NavElement = (element: navElement) => {
   );
   const [adaptativeEventStatus, setAdaptativeEventStatus] =
     useState<adaptativeEventStatus>({});
+  const [eventsLoading, setEventsLoading] = useState<boolean>(false);
   const fetchAdaptativeEvents = () => {
     const inner_function = async () => {
       if (element.topic_id) {
+        setEventsLoading(true);
         try {
           const { data } = await axiosInstance.get(
             `/topics/adaptative_events/triggered_events/${element.topic_id}`
@@ -44,6 +47,7 @@ const NavElement = (element: navElement) => {
             error
           );
         }
+        setEventsLoading(false);
       }
     };
     inner_function();
@@ -99,90 +103,96 @@ const NavElement = (element: navElement) => {
   return (
     <>
       {mapAdaptativeEventStatus(adaptativeEventStatus).hideTriggered ? null : (
-        <Grid
-          align="center"
-          gutter={10}
-          onClick={() => {
-            if (
-              mapAdaptativeEventStatus(adaptativeEventStatus).disableTriggered
-            ) {
-              ShowFailedNotification(
-                '¡No puede acceder a este Tópico!',
-                'Todavía no puede acceder a este tópico. Explore la plataforma y vuelva más tarde.'
-              );
-              return;
-            }
-            if (element.link) {
-              router.push(element.link);
-              if (displayNavbar) {
-                toggleDisplay();
-              }
-            }
-          }}
-          style={{
-            height: '56px',
-            cursor: 'pointer',
-            backgroundColor: mapAdaptativeEventStatus(adaptativeEventStatus)
-              .highlightTriggered
-              ? mantineTheme.colors.orange[1]
-              : mapAdaptativeEventStatus(adaptativeEventStatus).obscureTriggered
-              ? mantineTheme.colors.dark[0]
-              : '',
-          }}
-          sx={(theme) => {
-            return {
-              transition: 'background-color 0.25s ease-in-out',
-              '&:hover': {
-                backgroundColor: theme.colors.gray[1],
-              },
-            };
-          }}
-        >
-          <Grid.Col span={2}>
-            <ThemeIcon
-              color={element?.color}
-              variant="light"
-              size={'lg'}
-              radius="sm"
-            >
-              {element.icon ?? null}
-            </ThemeIcon>
-          </Grid.Col>
-          <Grid.Col span={8}>
-            <Text
-              size="md"
-              weight={500}
-              color={
+        <Skeleton width={'100%'} visible={eventsLoading}>
+          <Grid
+            align="center"
+            gutter={10}
+            onClick={() => {
+              if (
                 mapAdaptativeEventStatus(adaptativeEventStatus).disableTriggered
-                  ? 'dimmed'
-                  : 'dark'
+              ) {
+                ShowFailedNotification(
+                  '¡No puede acceder a este Tópico!',
+                  'Todavía no puede acceder a este tópico. Explore la plataforma y vuelva más tarde.'
+                );
+                return;
               }
-              style={{
-                whiteSpace: 'nowrap',
-                overflow: 'hidden',
-                textOverflow: 'ellipsis',
-                maxWidth: '25ch',
-              }}
-            >
-              {element.title}
-            </Text>
-          </Grid.Col>
-          <Grid.Col span={2}>
-            {mapAdaptativeEventStatus(adaptativeEventStatus)
-              .highlightTriggered ? (
-              <MoodHappy size={24} />
-            ) : null}
-            {mapAdaptativeEventStatus(adaptativeEventStatus)
-              .disableTriggered ? (
-              <ExternalLinkOff size={24} />
-            ) : null}
-            {mapAdaptativeEventStatus(adaptativeEventStatus).obscureTriggered &&
-            !mapAdaptativeEventStatus(adaptativeEventStatus)
-              .disableTriggered ? (
-              <MoodSad size={24} />
-            ) : null}
-          </Grid.Col>
-        </Grid>
+              if (element.link) {
+                router.push(element.link);
+                if (displayNavbar) {
+                  toggleDisplay();
+                }
+              }
+            }}
+            style={{
+              height: '56px',
+              cursor: 'pointer',
+              backgroundColor: mapAdaptativeEventStatus(adaptativeEventStatus)
+                .highlightTriggered
+                ? mantineTheme.colors.orange[1]
+                : mapAdaptativeEventStatus(adaptativeEventStatus)
+                    .obscureTriggered
+                ? mantineTheme.colors.dark[0]
+                : '',
+              padding: '0 10px',
+            }}
+            sx={(theme) => {
+              return {
+                transition: 'background-color 0.25s ease-in-out',
+                '&:hover': {
+                  backgroundColor: theme.colors.gray[1],
+                },
+              };
+            }}
+          >
+            <Grid.Col span={2}>
+              <ThemeIcon
+                color={element?.color}
+                variant="light"
+                size={'lg'}
+                radius="sm"
+              >
+                {element.icon ?? null}
+              </ThemeIcon>
+            </Grid.Col>
+            <Grid.Col span={8}>
+              <Text
+                size="md"
+                weight={500}
+                color={
+                  mapAdaptativeEventStatus(adaptativeEventStatus)
+                    .disableTriggered
+                    ? 'dimmed'
+                    : 'dark'
+                }
+                style={{
+                  whiteSpace: 'nowrap',
+                  overflow: 'hidden',
+                  textOverflow: 'ellipsis',
+                  maxWidth: '25ch',
+                }}
+              >
+                {element.title}
+              </Text>
+            </Grid.Col>
+            <Grid.Col span={2}>
+              {mapAdaptativeEventStatus(adaptativeEventStatus)
+                .highlightTriggered ? (
+                <MoodHappy size={24} />
+              ) : null}
+              {mapAdaptativeEventStatus(adaptativeEventStatus)
+                .disableTriggered ? (
+                <ExternalLinkOff size={24} />
+              ) : null}
+              {mapAdaptativeEventStatus(adaptativeEventStatus)
+                .obscureTriggered &&
+              !mapAdaptativeEventStatus(adaptativeEventStatus)
+                .disableTriggered ? (
+                <MoodSad size={24} />
+              ) : null}
+            </Grid.Col>
+          </Grid>
+        </Skeleton>
       )}
     </>
   );

@@ -101,6 +101,7 @@ const CreateAdaptativeEventModal = ({
             label={'Cambio a Producir'}
             {...form.getInputProps('triggered_change')}
             disabled={loading}
+            withinPortal
           />
           <Select
             data={[
@@ -117,6 +118,7 @@ const CreateAdaptativeEventModal = ({
             label={'Agregador Condicional'}
             {...form.getInputProps('condition_aggregator')}
             disabled={loading}
+            withinPortal
           />
           <Group spacing={'lg'}>
             <Text weight="bold" size="sm">
@@ -169,6 +171,7 @@ const CreateAdaptativeEventModal = ({
                           `adaptation_conditions.${conditionIndex}.variable_to_compare`
                         )}
                         disabled={loading}
+                        withinPortal
                       />
                       <Text weight="bold" size="md">
                         Valor a Comparar
@@ -211,6 +214,7 @@ const CreateAdaptativeEventModal = ({
                           `adaptation_conditions.${conditionIndex}.comparation_condition`
                         )}
                         disabled={loading}
+                        withinPortal
                       />
                     </Stack>
                   </Card>
