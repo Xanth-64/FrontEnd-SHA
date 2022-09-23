@@ -1,24 +1,28 @@
 import {
+  Button,
   Card,
-  Title,
-  Stack,
   Group,
   Pagination,
-  useMantineTheme,
-  Text,
   Select,
-  Button,
+  Stack,
+  Text,
+  Title,
+  useMantineTheme,
 } from '@mantine/core';
 import { useViewportSize } from '@mantine/hooks';
 import { useEffect, useState } from 'react';
 import { Plus } from 'tabler-icons-react';
+
 import axiosInstance from '../../lib/constants/axiosInstance';
 import ShowFailedNotification from '../../lib/utils/ShowFailedNotification';
+
 import measurableInteraction from '../../types/api_schemas/measurableInteraction';
 import pageInteractionsCardProps from '../../types/component_schemas/pageInteractionsCardProps';
+
+import CustomLoadingOverlay from '../overlays/CustomLoadingOverlay';
+
 import CreateInteractionModal from '../molecules/CreateInteractionModal';
 import InteractionTable from '../molecules/InteractionTable';
-import CustomLoadingOverlay from '../overlays/CustomLoadingOverlay';
 
 const PageInteractionsCard = ({
   currentLearningContent,

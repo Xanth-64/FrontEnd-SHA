@@ -1,10 +1,11 @@
 import { AppShell } from '@mantine/core';
-import AppHeader from '../molecules/AppHeader';
-import AppFooter from '../molecules/AppFooter';
 import dynamic from 'next/dynamic';
-
 import { ReactNode } from 'react';
+
 import useUser from '../../lib/hooks/useUser';
+
+import AppFooter from '../molecules/AppFooter';
+import AppHeader from '../molecules/AppHeader';
 
 type Props = {
   children: ReactNode;

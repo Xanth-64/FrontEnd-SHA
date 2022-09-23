@@ -1,18 +1,24 @@
 import type { NextPage } from 'next';
 import type { GetServerSidePropsContext } from 'next';
-import CardHolder from '../../../../components/templates/CardHolder';
-import TopNavigation from '../../../../components/organisms/TopNavigation';
-import { useEffect, useState } from 'react';
-import teacherTemplateTabList from '../../../../lib/constants/tabLists/teacherTemplateTabList';
-import TemplatePageDisplay from '../../../../components/organisms/TemplatePageDisplay';
-import TemplateInfoEditorCard from '../../../../components/organisms/TemplateInfoEditorCard';
-import TemplateAdaptationCard from '../../../../components/organisms/TemplateAdaptationCard';
-import NonSSRWrapper from '../../../../components/overlays/NonSSRWrapper';
-import template from '../../../../types/api_schemas/template';
 import { useRouter } from 'next/router';
-import ShowFailedNotification from '../../../../lib/utils/ShowFailedNotification';
+import { useEffect, useState } from 'react';
+
 import axiosInstance from '../../../../lib/constants/axiosInstance';
+import teacherTemplateTabList from '../../../../lib/constants/tabLists/teacherTemplateTabList';
+import ShowFailedNotification from '../../../../lib/utils/ShowFailedNotification';
+
+import template from '../../../../types/api_schemas/template';
+
+import NonSSRWrapper from '../../../../components/overlays/NonSSRWrapper';
+
+import CardHolder from '../../../../components/templates/CardHolder';
+
 import CreateAdaptativeEventCard from '../../../../components/organisms/CreateAdaptativeEventCard';
+import TemplateAdaptationCard from '../../../../components/organisms/TemplateAdaptationCard';
+import TemplateInfoEditorCard from '../../../../components/organisms/TemplateInfoEditorCard';
+import TemplatePageDisplay from '../../../../components/organisms/TemplatePageDisplay';
+import TopNavigation from '../../../../components/organisms/TopNavigation';
+
 const TemplateDetail: NextPage = () => {
   const [currentTab, setCurrentTab] = useState<string>(
     teacherTemplateTabList[0].value

@@ -1,17 +1,20 @@
 import {
-  Card,
-  Title,
-  Stack,
-  PasswordInput,
-  Center,
   Button,
+  Card,
+  Center,
   Grid,
+  PasswordInput,
+  Stack,
+  Title,
 } from '@mantine/core';
 import { useForm, zodResolver } from '@mantine/form';
 import { useState } from 'react';
+
 import axiosInstance from '../../lib/constants/axiosInstance';
-import ChangePasswordSchema from '../../schemas/ChangePasswordSchema';
 import ShowSuccessfullCreate from '../../lib/utils/ShowSuccessfullCreate';
+
+import ChangePasswordSchema from '../../schemas/ChangePasswordSchema';
+
 const ChangePasswordCard = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const form = useForm({

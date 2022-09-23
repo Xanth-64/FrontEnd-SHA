@@ -1,11 +1,15 @@
 import { Card, Select } from '@mantine/core';
 import { useEffect, useState } from 'react';
+
 import axiosInstance from '../../lib/constants/axiosInstance';
 import ShowFailedNotification from '../../lib/utils/ShowFailedNotification';
+
 import topic from '../../types/api_schemas/topic';
 import selectTopicCardProps from '../../types/component_schemas/selectTopicCardProps';
-import TopicSelectItem from '../atoms/TopicSelectItem';
+
 import CustomLoadingOverlay from '../overlays/CustomLoadingOverlay';
+
+import TopicSelectItem from '../atoms/TopicSelectItem';
 
 const SelectTopicCard = ({
   children,

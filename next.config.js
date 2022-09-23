@@ -4,19 +4,19 @@ const nextConfig = {
   webpack(config) {
     config.module.rules.push({
       test: /\.svg$/,
-      use: ["@svgr/webpack"]
+      use: ['@svgr/webpack'],
     });
 
     return config;
   },
-  redirects: async  () => {
+  redirects: async () => {
     return [
       {
         source: '/',
         destination: '/home',
         permanent: true,
       },
-    ]
-  }
+    ];
+  },
 };
 module.exports = nextConfig;

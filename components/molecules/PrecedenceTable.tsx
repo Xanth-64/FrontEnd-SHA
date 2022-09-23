@@ -1,14 +1,15 @@
 import {
-  Table,
-  useMantineTheme,
-  Text,
   Center,
-  UnstyledButton,
+  Table,
+  Text,
   ThemeIcon,
+  UnstyledButton,
+  useMantineTheme,
 } from '@mantine/core';
 import { useViewportSize } from '@mantine/hooks';
-import precedenceTableProps from '../../types/component_schemas/precedenceTableProps';
 import { Settings } from 'tabler-icons-react';
+
+import precedenceTableProps from '../../types/component_schemas/precedenceTableProps';
 
 const PrecedenceTable = (props: precedenceTableProps) => {
   const { prelations, updatePrelation } = props;

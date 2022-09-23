@@ -1,17 +1,17 @@
 import {
+  Button,
   Card,
   Grid,
   Group,
+  HoverCard,
+  Overlay,
   Stack,
-  ThemeIcon,
   Text,
+  ThemeIcon,
   Title,
   Transition,
   UnstyledButton,
   useMantineTheme,
-  Button,
-  Overlay,
-  HoverCard,
 } from '@mantine/core';
 import { useHover } from '@mantine/hooks';
 import { useRouter } from 'next/router';
@@ -25,15 +25,18 @@ import {
   QuestionMark,
   Trash,
 } from 'tabler-icons-react';
+
 import axiosInstance from '../../lib/constants/axiosInstance';
 import useUser from '../../lib/hooks/useUser';
-import mapAdaptativeEventStatus from '../../lib/utils/mapAdaptativeEventStatus';
 import ShowFailedNotification from '../../lib/utils/ShowFailedNotification';
 import ShowSuccessfullCreate from '../../lib/utils/ShowSuccessfullCreate';
+import mapAdaptativeEventStatus from '../../lib/utils/mapAdaptativeEventStatus';
+
 import adaptativeEvent from '../../types/api_schemas/adaptativeEvent';
 import testAttempt from '../../types/api_schemas/testAttempt';
 import practiceTestCardProps from '../../types/component_schemas/practiceTestCardProps';
 import adaptativeEventStatus from '../../types/other_schemas/adaptativeEventStatus';
+
 import CustomLoadingOverlay from '../overlays/CustomLoadingOverlay';
 
 const PracticeTestCard = ({ page, updatePageList }: practiceTestCardProps) => {

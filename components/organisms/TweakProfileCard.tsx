@@ -1,20 +1,23 @@
 import {
-  Card,
-  Title,
-  Stack,
-  Grid,
-  TextInput,
-  Center,
   Button,
+  Card,
+  Center,
+  Grid,
   Image,
+  Stack,
+  TextInput,
+  Title,
 } from '@mantine/core';
 import { useForm, zodResolver } from '@mantine/form';
 import { useState } from 'react';
 import { useSWRConfig } from 'swr';
+
 import axiosInstance from '../../lib/constants/axiosInstance';
 import useUser from '../../lib/hooks/useUser';
-import UpdateAccountSchema from '../../schemas/UpdateAccountSchema';
+
 import CustomDropzone from '../atoms/CustomDropzone';
+
+import UpdateAccountSchema from '../../schemas/UpdateAccountSchema';
 
 const TweakProfileCard = () => {
   const [loading, setLoading] = useState<boolean>(false);

@@ -1,16 +1,19 @@
 import {
-  Table,
-  Text,
-  useMantineTheme,
-  ThemeIcon,
   Center,
   Group,
+  Table,
+  Text,
+  ThemeIcon,
   UnstyledButton,
+  useMantineTheme,
 } from '@mantine/core';
 import { useViewportSize } from '@mantine/hooks';
-import topic from '../../types/api_schemas/topic';
-import { Settings, ArrowUpCircle, ArrowDownCircle } from 'tabler-icons-react';
+import { ArrowDownCircle, ArrowUpCircle, Settings } from 'tabler-icons-react';
+
 import axiosInstance from '../../lib/constants/axiosInstance';
+
+import topic from '../../types/api_schemas/topic';
+
 type Props = {
   topics: topic[];
   refetchData: () => void;
@@ -23,7 +26,7 @@ const TopicTable = ({ topics, refetchData, updateTopic }: Props) => {
   const mobile = width <= theme.breakpoints.md;
   const switchTopic = async (topic: topic, direction: 'up' | 'down') => {
     try {
-       await axiosInstance.put('/topics/switch', {
+      await axiosInstance.put('/topics/switch', {
         uuid: topic.id,
         move_direction: direction,
       });

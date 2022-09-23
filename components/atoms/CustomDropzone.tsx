@@ -1,12 +1,13 @@
-import { Group, Text, useMantineTheme, Stack } from '@mantine/core';
-import { IconUpload, IconPhoto, IconX } from '@tabler/icons';
+import { Group, Stack, Text, useMantineTheme } from '@mantine/core';
 import { Dropzone, IMAGE_MIME_TYPE } from '@mantine/dropzone';
+import { IconPhoto, IconUpload, IconX } from '@tabler/icons';
 import axios from 'axios';
-import customDropzoneProps from '../../types/component_schemas/customDropzoneProps';
 import { useState } from 'react';
 
+import customDropzoneProps from '../../types/component_schemas/customDropzoneProps';
+
 const CustomDropzone = (props: customDropzoneProps) => {
-  const { fileUrl, setFileUrl,dropZonePrompt, ...dropzoneProps } = props;
+  const { fileUrl, setFileUrl, dropZonePrompt, ...dropzoneProps } = props;
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const theme = useMantineTheme();

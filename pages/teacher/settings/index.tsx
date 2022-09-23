@@ -1,10 +1,13 @@
 import type { NextPage } from 'next';
 import type { GetServerSidePropsContext } from 'next';
+
+import NonSSRWrapper from '../../../components/overlays/NonSSRWrapper';
+
+import CardHolder from '../../../components/templates/CardHolder';
+
 import ChangePasswordCard from '../../../components/organisms/ChangePasswordCard';
 import EnableInstructorsCard from '../../../components/organisms/EnableInstructorsCard';
 import TweakProfileCard from '../../../components/organisms/TweakProfileCard';
-import NonSSRWrapper from '../../../components/overlays/NonSSRWrapper';
-import CardHolder from '../../../components/templates/CardHolder';
 
 const Settings: NextPage = () => {
   return (

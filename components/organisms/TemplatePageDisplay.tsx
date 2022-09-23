@@ -1,17 +1,23 @@
 import { Button, Menu } from '@mantine/core';
 import { useEffect, useState } from 'react';
 import { Notes, Plus, QuestionMark } from 'tabler-icons-react';
+
 import axiosInstance from '../../lib/constants/axiosInstance';
 import useUser from '../../lib/hooks/useUser';
 import ShowFailedNotification from '../../lib/utils/ShowFailedNotification';
+
 import page from '../../types/api_schemas/page';
 import templatePageDisplayProps from '../../types/component_schemas/templatePageDisplayProps';
+
+import CustomLoadingOverlay from '../overlays/CustomLoadingOverlay';
+
+import CardHolder from '../templates/CardHolder';
+
 import CreateLearningContentCard from '../molecules/CreateLearningContentCard';
 import CreatePracticeTestCard from '../molecules/CreatePracticeTestCard';
 import LearningContentCard from '../molecules/LearningContentCard';
 import PracticeTestCard from '../molecules/PracticeTestCard';
-import CustomLoadingOverlay from '../overlays/CustomLoadingOverlay';
-import CardHolder from '../templates/CardHolder';
+
 const TemplatePageDisplay = ({
   currentTemplate,
   loading,

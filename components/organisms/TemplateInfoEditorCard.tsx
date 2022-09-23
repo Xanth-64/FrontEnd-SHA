@@ -1,24 +1,29 @@
 import {
+  Button,
   Card,
-  Title,
+  Center,
+  Grid,
+  Image,
   Stack,
   TextInput,
   Textarea,
-  Button,
-  Grid,
-  Image,
-  Center,
+  Title,
   useMantineTheme,
 } from '@mantine/core';
-import { useViewportSize } from '@mantine/hooks';
 import { useForm, zodResolver } from '@mantine/form';
+import { useViewportSize } from '@mantine/hooks';
 import { useEffect, useState } from 'react';
 import { DeviceFloppy } from 'tabler-icons-react';
+
 import axiosInstance from '../../lib/constants/axiosInstance';
 import ShowSuccessfullCreate from '../../lib/utils/ShowSuccessfullCreate';
-import TemplateInfoEditSchema from '../../schemas/TemplateInfoEditSchema';
+
 import templateInfoEditorCardProps from '../../types/component_schemas/templateInfoEditorCardProps';
+
 import CustomDropzone from '../atoms/CustomDropzone';
+
+import TemplateInfoEditSchema from '../../schemas/TemplateInfoEditSchema';
+
 const TemplateInfoEditorCard = ({
   currentTemplate,
   fetchTemplate,

@@ -1,5 +1,6 @@
+import { Ruler2, Writing } from 'tabler-icons-react';
+
 import topNavigationTab from '../../../types/component_schemas/topNavigationTab';
-import { Writing, Ruler2 } from 'tabler-icons-react';
 
 const teacherPageTabList: topNavigationTab[] = [
   {

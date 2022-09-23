@@ -1,5 +1,6 @@
+import { ArrowsLeftRight, Ruler2, SquarePlus } from 'tabler-icons-react';
+
 import topNavigationTab from '../../../types/component_schemas/topNavigationTab';
-import { SquarePlus, ArrowsLeftRight, Ruler2 } from 'tabler-icons-react';
 
 const teacherTopicTabList: topNavigationTab[] = [
   {

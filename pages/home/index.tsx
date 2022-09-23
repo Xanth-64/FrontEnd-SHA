@@ -1,6 +1,8 @@
-import type { NextPage } from 'next';
 import { Grid } from '@mantine/core';
+import type { NextPage } from 'next';
+
 import WelcomeCard from '../../components/organisms/WelcomeCard';
+
 const Home: NextPage = () => {
   return (
     <Grid gutter={20}>

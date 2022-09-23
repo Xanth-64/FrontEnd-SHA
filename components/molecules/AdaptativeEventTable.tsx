@@ -15,10 +15,12 @@ import {
   Settings,
   Trash,
 } from 'tabler-icons-react';
+
 import axiosInstance from '../../lib/constants/axiosInstance';
-import mapEventNames from '../../lib/utils/mapEventNames';
 import ShowFailedNotification from '../../lib/utils/ShowFailedNotification';
 import ShowSuccessfullCreate from '../../lib/utils/ShowSuccessfullCreate';
+import mapEventNames from '../../lib/utils/mapEventNames';
+
 import adaptativeEvent from '../../types/api_schemas/adaptativeEvent';
 import adaptativeEventTableProps from '../../types/component_schemas/adaptativeEventTableProps';
 

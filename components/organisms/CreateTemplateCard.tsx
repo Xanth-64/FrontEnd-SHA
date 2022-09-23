@@ -1,25 +1,29 @@
 import {
-  Card,
-  Title,
-  Stack,
-  useMantineTheme,
-  Group,
   Button,
+  Card,
+  Group,
   Pagination,
-  Text,
   Select,
+  Stack,
+  Text,
+  Title,
+  useMantineTheme,
 } from '@mantine/core';
-import { Plus } from 'tabler-icons-react';
 import { useViewportSize } from '@mantine/hooks';
-import createTemplateCardProps from '../../types/component_schemas/createTemplateCardProps';
-import { useState, useEffect } from 'react';
-import CustomLoadingOverlay from '../overlays/CustomLoadingOverlay';
-import topic from '../../types/api_schemas/topic';
+import { useEffect, useState } from 'react';
+import { Plus } from 'tabler-icons-react';
+
 import axiosInstance from '../../lib/constants/axiosInstance';
 import ShowFailedNotification from '../../lib/utils/ShowFailedNotification';
-import TemplateTable from '../molecules/TemplateTable';
+
 import template from '../../types/api_schemas/template';
+import topic from '../../types/api_schemas/topic';
+import createTemplateCardProps from '../../types/component_schemas/createTemplateCardProps';
+
+import CustomLoadingOverlay from '../overlays/CustomLoadingOverlay';
+
 import CreateTemplateModal from '../molecules/CreateTemplateModal';
+import TemplateTable from '../molecules/TemplateTable';
 
 const CreateTemplateCard = ({ topic }: createTemplateCardProps) => {
   const theme = useMantineTheme();

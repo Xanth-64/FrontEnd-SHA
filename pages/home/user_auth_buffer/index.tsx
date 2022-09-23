@@ -1,8 +1,10 @@
 import type { NextPage } from 'next';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
-import CustomLoadingOverlay from '../../../components/overlays/CustomLoadingOverlay';
+
 import useUser from '../../../lib/hooks/useUser';
+
+import CustomLoadingOverlay from '../../../components/overlays/CustomLoadingOverlay';
 
 const UserAuthBuffer: NextPage = () => {
   const { user, isLoading } = useUser();

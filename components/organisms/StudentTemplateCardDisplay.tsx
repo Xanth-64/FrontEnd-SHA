@@ -1,10 +1,14 @@
 import { useEffect, useState } from 'react';
+
 import axiosInstance from '../../lib/constants/axiosInstance';
 import ShowFailedNotification from '../../lib/utils/ShowFailedNotification';
+
 import template from '../../types/api_schemas/template';
 import studentTemplateCardDisplayProps from '../../types/component_schemas/studentTemplateCardDisplayProps';
-import StudentTemplateCard from '../molecules/StudentTemplateCard';
+
 import CardHolder from '../templates/CardHolder';
+
+import StudentTemplateCard from '../molecules/StudentTemplateCard';
 
 const StudentTemplateCardDisplay = ({
   topicId,

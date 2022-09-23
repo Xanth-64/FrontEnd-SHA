@@ -1,16 +1,18 @@
 import {
+  Avatar,
   Center,
   Grid,
-  Avatar,
+  Menu,
   Stack,
   Text,
   UnstyledButton,
-  Menu,
 } from '@mantine/core';
-import { ChevronRight, Settings, Logout } from 'tabler-icons-react';
 import { deleteCookie } from 'cookies-next';
 import { useRouter } from 'next/router';
+import { ChevronRight, Logout, Settings } from 'tabler-icons-react';
+
 import { useNavbarContext } from '../../lib/contexts/NavbarContext';
+
 type userProps = {
   name: string;
   email: string;

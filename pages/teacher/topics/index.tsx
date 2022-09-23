@@ -1,19 +1,24 @@
 import type { NextPage } from 'next';
 import type { GetServerSidePropsContext } from 'next';
-import CardHolder from '../../../components/templates/CardHolder';
-import CreateTopicCard from '../../../components/organisms/CreateTopicCard';
-import TopNavigation from '../../../components/organisms/TopNavigation';
 import { useEffect, useState } from 'react';
-import teacherTopicTabList from '../../../lib/constants/tabLists/teacherTopicTabList';
-import CreatePrecedenceCard from '../../../components/organisms/CreatePrecedenceCard';
-import PrecedenceGraphCard from '../../../components/organisms/PrecedenceGraphCard';
-import topic from '../../../types/api_schemas/topic';
-import prelation from '../../../types/api_schemas/prelation';
+
 import axiosInstance from '../../../lib/constants/axiosInstance';
+import teacherTopicTabList from '../../../lib/constants/tabLists/teacherTopicTabList';
 import ShowFailedNotification from '../../../lib/utils/ShowFailedNotification';
+
+import prelation from '../../../types/api_schemas/prelation';
+import topic from '../../../types/api_schemas/topic';
+
 import NonSSRWrapper from '../../../components/overlays/NonSSRWrapper';
+
+import CardHolder from '../../../components/templates/CardHolder';
+
 import CreateAdaptativeEventCard from '../../../components/organisms/CreateAdaptativeEventCard';
+import CreatePrecedenceCard from '../../../components/organisms/CreatePrecedenceCard';
+import CreateTopicCard from '../../../components/organisms/CreateTopicCard';
+import PrecedenceGraphCard from '../../../components/organisms/PrecedenceGraphCard';
 import SelectTopicCard from '../../../components/organisms/SelectTopicCard';
+import TopNavigation from '../../../components/organisms/TopNavigation';
 
 const Topics: NextPage = () => {
   const [currentTab, setCurrentTab] = useState<string>(

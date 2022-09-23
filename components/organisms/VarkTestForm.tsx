@@ -1,23 +1,26 @@
 import {
+  Button,
   Card,
-  Stack,
-  Title,
-  Text,
   Checkbox,
   Grid,
   Group,
-  Button,
+  Stack,
+  Text,
+  Title,
 } from '@mantine/core';
-import { useState } from 'react';
-import CardHolder from '../templates/CardHolder';
-import varkCuestionnaireList from '../../lib/constants/varkCuestionnaireList';
-import { v4 } from 'uuid';
 import { useForm, zodResolver } from '@mantine/form';
-import VarkSchema from '../../schemas/VarkSchema';
-import axiosInstance from '../../lib/constants/axiosInstance';
 import { useRouter } from 'next/router';
+import { useState } from 'react';
+import { v4 } from 'uuid';
+
+import axiosInstance from '../../lib/constants/axiosInstance';
+import varkCuestionnaireList from '../../lib/constants/varkCuestionnaireList';
 import useUser from '../../lib/hooks/useUser';
 import ShowFailedNotification from '../../lib/utils/ShowFailedNotification';
+
+import CardHolder from '../templates/CardHolder';
+
+import VarkSchema from '../../schemas/VarkSchema';
 
 const VarkTestForm = () => {
   const form = useForm({

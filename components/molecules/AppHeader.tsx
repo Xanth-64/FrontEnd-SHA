@@ -1,8 +1,10 @@
-import { Header, Center, Group, MediaQuery, Burger } from '@mantine/core';
-import ApplicationLogo from '../../public/application_logo.svg';
-import ApplicationTitle from '../../public/application_title.svg';
+import { Burger, Center, Group, Header, MediaQuery } from '@mantine/core';
+
 import { useNavbarContext } from '../../lib/contexts/NavbarContext';
 import useUser from '../../lib/hooks/useUser';
+
+import ApplicationLogo from '../../public/application_logo.svg';
+import ApplicationTitle from '../../public/application_title.svg';
 
 const AppHeader = () => {
   const { displayNavbar, toggleDisplay } = useNavbarContext();

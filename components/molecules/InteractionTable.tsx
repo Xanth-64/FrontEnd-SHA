@@ -9,10 +9,12 @@ import {
 } from '@mantine/core';
 import { useViewportSize } from '@mantine/hooks';
 import { Adjustments, Settings, Trash } from 'tabler-icons-react';
+
 import axiosInstance from '../../lib/constants/axiosInstance';
-import mapInteractionTriggers from '../../lib/utils/mapInteractionTriggers';
 import ShowFailedNotification from '../../lib/utils/ShowFailedNotification';
 import ShowSuccessfullCreate from '../../lib/utils/ShowSuccessfullCreate';
+import mapInteractionTriggers from '../../lib/utils/mapInteractionTriggers';
+
 import measurableInteraction from '../../types/api_schemas/measurableInteraction';
 import interactionTableProps from '../../types/component_schemas/interactionTableProps';
 

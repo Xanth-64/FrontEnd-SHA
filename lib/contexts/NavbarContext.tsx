@@ -1,4 +1,4 @@
-import React, { useContext, useState, ReactNode, createContext } from 'react';
+import React, { ReactNode, createContext, useContext, useState } from 'react';
 
 type NavbarContextType = {
   displayNavbar: boolean;

@@ -1,26 +1,29 @@
-import templateTableProps from '../../types/component_schemas/templateTableProps';
 import {
-  Table,
-  UnstyledButton,
-  ThemeIcon,
-  Text,
-  useMantineTheme,
   Center,
   Group,
   Menu,
+  Table,
+  Text,
+  ThemeIcon,
+  UnstyledButton,
+  useMantineTheme,
 } from '@mantine/core';
 import { useViewportSize } from '@mantine/hooks';
+import { useRouter } from 'next/router';
 import {
-  ArrowUpCircle,
-  ArrowDownCircle,
-  Settings,
   Adjustments,
+  ArrowDownCircle,
+  ArrowUpCircle,
   ListDetails,
+  Settings,
 } from 'tabler-icons-react';
-import template from '../../types/api_schemas/template';
+
 import axiosInstance from '../../lib/constants/axiosInstance';
 import ShowFailedNotification from '../../lib/utils/ShowFailedNotification';
-import { useRouter } from 'next/router';
+
+import template from '../../types/api_schemas/template';
+import templateTableProps from '../../types/component_schemas/templateTableProps';
+
 const TemplateTable = ({
   templates,
   refetchData,

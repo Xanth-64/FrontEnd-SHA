@@ -1,33 +1,38 @@
 import {
+  Button,
+  Center,
+  Grid,
+  Group,
   Modal,
   ModalProps,
-  Stack,
-  Title,
-  Text,
-  Group,
-  Grid,
-  Slider,
   Select,
+  Slider,
+  Stack,
+  Text,
+  Title,
   useMantineTheme,
-  Center,
-  Button,
 } from '@mantine/core';
-import { useEffect, useState } from 'react';
-import prelation from '../../types/api_schemas/prelation';
 import { useForm, zodResolver } from '@mantine/form';
+import { useViewportSize } from '@mantine/hooks';
+import { useEffect, useState } from 'react';
 import {
-  InfoCircle,
   ArrowDown,
   ArrowRight,
   DeviceFloppy,
+  InfoCircle,
 } from 'tabler-icons-react';
-import PrelationSchema from '../../schemas/PrelationSchema';
-import { useViewportSize } from '@mantine/hooks';
+
 import axiosInstance from '../../lib/constants/axiosInstance';
-import topic from '../../types/api_schemas/topic';
 import ShowFailedNotification from '../../lib/utils/ShowFailedNotification';
-import TopicSelectItem from '../atoms/TopicSelectItem';
 import ShowSuccessfullCreate from '../../lib/utils/ShowSuccessfullCreate';
+
+import prelation from '../../types/api_schemas/prelation';
+import topic from '../../types/api_schemas/topic';
+
+import TopicSelectItem from '../atoms/TopicSelectItem';
+
+import PrelationSchema from '../../schemas/PrelationSchema';
+
 interface CreatePrecedenceModalProps extends ModalProps {
   prelationToUpdate?: prelation;
 }

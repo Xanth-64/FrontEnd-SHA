@@ -1,12 +1,7 @@
-import instructorTableProps from '../../types/component_schemas/instructorTableProps';
-import {
-  Table,
-  Text,
-  useMantineTheme,
-  Center,
-  Switch,
-} from '@mantine/core';
+import { Center, Switch, Table, Text, useMantineTheme } from '@mantine/core';
 import { useViewportSize } from '@mantine/hooks';
+
+import instructorTableProps from '../../types/component_schemas/instructorTableProps';
 
 const InstructorTable = ({
   instructors,

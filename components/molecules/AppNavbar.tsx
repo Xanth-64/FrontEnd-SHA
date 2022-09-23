@@ -1,22 +1,26 @@
+import { Icon } from '@iconify/react';
 import {
+  Divider,
   Navbar,
   ScrollArea,
-  Divider,
   Transition,
   useMantineTheme,
 } from '@mantine/core';
 import { useViewportSize } from '@mantine/hooks';
+import { useRouter } from 'next/router';
+import { useEffect, useState } from 'react';
+
+import axiosInstance from '../../lib/constants/axiosInstance';
+import teacherNavList from '../../lib/constants/navLists/teacherNavlist';
 import { useNavbarContext } from '../../lib/contexts/NavbarContext';
 import useUser from '../../lib/hooks/useUser';
+
+import topic from '../../types/api_schemas/topic';
+import navElement from '../../types/component_schemas/navElement';
+
 import NavbarList from '../atoms/NavbarList';
 import ProfileData from '../atoms/ProfileData';
-import { useEffect, useState } from 'react';
-import navElement from '../../types/component_schemas/navElement';
-import teacherNavList from '../../lib/constants/navLists/teacherNavlist';
-import axiosInstance from '../../lib/constants/axiosInstance';
-import topic from '../../types/api_schemas/topic';
-import { Icon } from '@iconify/react';
-import { useRouter } from 'next/router';
+
 const AppNavbar = () => {
   const { displayNavbar } = useNavbarContext();
   const { width } = useViewportSize();

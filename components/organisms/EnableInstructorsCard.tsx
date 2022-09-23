@@ -1,20 +1,24 @@
 import {
   Card,
-  Title,
-  Stack,
   Group,
   Pagination,
-  useMantineTheme,
   Select,
+  Stack,
   Text,
+  Title,
+  useMantineTheme,
 } from '@mantine/core';
 import { useViewportSize } from '@mantine/hooks';
 import { useEffect, useState } from 'react';
+
 import axiosInstance from '../../lib/constants/axiosInstance';
 import ShowFailedNotification from '../../lib/utils/ShowFailedNotification';
+
 import user from '../../types/api_schemas/user';
-import InstructorTable from '../molecules/InstructorTable';
+
 import CustomLoadingOverlay from '../overlays/CustomLoadingOverlay';
+
+import InstructorTable from '../molecules/InstructorTable';
 
 const EnableInstructorsCard = () => {
   const [loading, setLoading] = useState<boolean>(false);

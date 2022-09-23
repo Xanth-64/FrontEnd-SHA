@@ -1,16 +1,13 @@
-import type { NextPage } from 'next';
 import type { GetServerSidePropsContext } from 'next';
-import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
-import StudentPracticeTestAttemptDisplay from '../../../../components/organisms/StudentPracticeTestAttemptDisplay';
-import StudentPracticeTestForm from '../../../../components/organisms/StudentPracticeTestForm';
-import CustomLoadingOverlay from '../../../../components/overlays/CustomLoadingOverlay';
-import NonSSRWrapper from '../../../../components/overlays/NonSSRWrapper';
+
 import axiosInstance from '../../../../lib/constants/axiosInstance';
-import ShowFailedNotification from '../../../../lib/utils/ShowFailedNotification';
+
 import practiceTest from '../../../../types/api_schemas/practiceTest';
 import testAttempt from '../../../../types/api_schemas/testAttempt';
 import TestProps from '../../../../types/page_schemas/TestProps';
+
+import StudentPracticeTestAttemptDisplay from '../../../../components/organisms/StudentPracticeTestAttemptDisplay';
+import StudentPracticeTestForm from '../../../../components/organisms/StudentPracticeTestForm';
 
 const Test = ({
   currentPracticeTest,

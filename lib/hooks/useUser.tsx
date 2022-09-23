@@ -1,9 +1,11 @@
+import axiosRetry from 'axios-retry';
+import { deleteCookie, getCookie, hasCookie } from 'cookies-next';
 import useSWR from 'swr';
-import axiosInstance from '../constants/axiosInstance';
-import { getCookie, hasCookie, deleteCookie } from 'cookies-next';
+
 import role from '../../types/api_schemas/role';
 import user from '../../types/api_schemas/user';
-import axiosRetry from 'axios-retry';
+
+import axiosInstance from '../constants/axiosInstance';
 
 const useUser = () => {
   type userAuthData = {

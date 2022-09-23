@@ -1,27 +1,30 @@
 import {
+  Button,
   Card,
   Group,
   Modal,
-  Stack,
   Select,
   Slider,
+  Stack,
   Text,
   ThemeIcon,
   Title,
   UnstyledButton,
   useMantineTheme,
-  Button,
 } from '@mantine/core';
 import { useForm, zodResolver } from '@mantine/form';
 import { useEffect, useState } from 'react';
 import { Plus, X } from 'tabler-icons-react';
+
 import axiosInstance from '../../lib/constants/axiosInstance';
-import mapEventNames from '../../lib/utils/mapEventNames';
-import mapEventVariableNames from '../../lib/utils/mapEventVariableNames';
 import ShowFailedNotification from '../../lib/utils/ShowFailedNotification';
 import ShowSuccessfullCreate from '../../lib/utils/ShowSuccessfullCreate';
-import AdaptativeEventSchema from '../../schemas/AdaptativeEventSchema';
+import mapEventNames from '../../lib/utils/mapEventNames';
+import mapEventVariableNames from '../../lib/utils/mapEventVariableNames';
+
 import createAdaptativeEventModalProps from '../../types/component_schemas/createAdaptativeEventModalProps';
+
+import AdaptativeEventSchema from '../../schemas/AdaptativeEventSchema';
 
 const CreateAdaptativeEventModal = ({
   adaptativeEventToUpdate,
