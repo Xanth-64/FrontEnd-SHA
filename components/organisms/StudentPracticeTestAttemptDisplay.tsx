@@ -83,6 +83,7 @@ const StudentPracticeTestAttemptDisplay = ({
                                   answerAlternative.is_correct ? 'green' : 'red'
                                 }
                                 value={answerAlternative.id}
+                                readOnly
                                 label={
                                   <Text color={theme.black[0]} weight={'bold'}>
                                     <Group spacing={'xs'} align="center">
@@ -111,6 +112,7 @@ const StudentPracticeTestAttemptDisplay = ({
                                   answerAlternative.is_correct ? 'green' : 'red'
                                 }
                                 value={answerAlternative.id}
+                                readOnly
                                 label={
                                   <Text color={theme.black[0]} weight={'bold'}>
                                     <Group spacing={'xs'} align="center">
