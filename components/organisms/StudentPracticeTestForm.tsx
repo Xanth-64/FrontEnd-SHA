@@ -1,11 +1,7 @@
 import {
   Button,
   Card,
-  Center,
-  Checkbox,
-  Grid,
   Group,
-  Radio,
   Stack,
   Text,
   Title,
@@ -14,12 +10,12 @@ import {
 import { useForm, zodResolver } from '@mantine/form';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
-import { v4 } from 'uuid';
 import axiosInstance from '../../lib/constants/axiosInstance';
 import ShowFailedNotification from '../../lib/utils/ShowFailedNotification';
 import ShowSuccessfullCreate from '../../lib/utils/ShowSuccessfullCreate';
 import PracticeTestAttemptSchema from '../../schemas/PracticeTestAttemptSchema';
 import studentPracticeTestFormProps from '../../types/component_schemas/studentPracticeTestFormProps';
+import StudentTestQuestionCard from '../molecules/StudentTestQuestionCard';
 import CardHolder from '../templates/CardHolder';
 
 const StudentPracticeTestForm = ({
@@ -75,83 +71,15 @@ const StudentPracticeTestForm = ({
         })}
       >
         <CardHolder>
-          {practiceTest.test_questions?.map((test_question, index) => {
+          {practiceTest.test_questions?.map((testQuestion, index) => {
             return (
-              <Card
-                key={test_question.id}
-                withBorder
-                shadow={'xs'}
-                radius={'md'}
-                style={{ padding: '36px 28px' }}
-              >
-                <Stack spacing={'xl'} style={{ width: '100%' }}>
-                  <Group position={'apart'}>
-                    <Title order={3}>{`Pregunta #${index + 1}`}</Title>
-                    <Title order={3}>
-                      Ponderación: {test_question.question_score} Puntos
-                    </Title>
-                  </Group>
-                  <Text>{test_question.question_prompt}</Text>
-                  {test_question.question_type === 'multiple_selection' ? (
-                    <Checkbox.Group
-                      {...form.getInputProps(
-                        `question_answers.${index}.selected_answer_alternatives`
-                      )}
-                    >
-                      <Grid align={'center'} style={{ width: '100%' }}>
-                        {test_question.answer_alternatives.map(
-                          (answerAlternative) => {
-                            return (
-                              <Grid.Col key={v4()} span={12} sm={6}>
-                                <Center>
-                                  <Checkbox
-                                    value={answerAlternative.id}
-                                    label={answerAlternative.alternative_text}
-                                    color="orange"
-                                    disabled={componentLoading}
-                                  />
-                                </Center>
-                              </Grid.Col>
-                            );
-                          }
-                        )}
-                      </Grid>
-                    </Checkbox.Group>
-                  ) : (
-                    <Radio.Group
-                      value={
-                        form.values.question_answers[index]
-                          .selected_answer_alternatives[0] ?? ''
-                      }
-                      onChange={(value) => {
-                        form.setFieldValue(
-                          `question_answers.${index}.selected_answer_alternatives`,
-                          [value]
-                        );
-                      }}
-                    >
-                      <Grid align={'center'} style={{ width: '100%' }}>
-                        {test_question.answer_alternatives.map(
-                          (answerAlternative) => {
-                            return (
-                              <Grid.Col key={v4()} span={12} sm={6}>
-                                <Center>
-                                  <Radio
-                                    value={answerAlternative.id}
-                                    label={answerAlternative.alternative_text}
-                                    color="orange"
-                                    disabled={componentLoading}
-                                  />
-                                </Center>
-                              </Grid.Col>
-                            );
-                          }
-                        )}
-                      </Grid>
-                    </Radio.Group>
-                  )}
-                </Stack>
-              </Card>
+              <StudentTestQuestionCard
+                key={testQuestion.id}
+                testQuestion={testQuestion}
+                index={index}
+                componentLoading={componentLoading}
+                form={form}
+              />
             );
           })}
           <Card style={{ width: '100%' }} withBorder shadow={'xs'}>

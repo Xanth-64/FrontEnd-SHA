@@ -123,18 +123,32 @@ export const CreatePracticeTestCard = ({
                   }
                 } catch (error: any) {
                   if (error?.response?.status === 400) {
-                    form.setErrors({
-                      title: 'Ya existe una prueba con este nombre.',
-                    });
+                    if (
+                      error?.response?.data?.data?.error ===
+                      'MODEL_HAS_TEST_ATTEMPTS'
+                    ) {
+                      form.setErrors({
+                        title: 'Ya esta prueba tiene intentos realizados.',
+                      });
+                      ShowFailedNotification(
+                        'Error al modificar la prueba.',
+                        'Ya esta prueba tiene intentos realizados por un estudiante. No puede modificarse.'
+                      );
+                    } else {
+                      form.setErrors({
+                        title: 'Ya existe una prueba con este nombre.',
+                      });
+                      ShowFailedNotification(
+                        'Error al crear la prueba.',
+                        'Ya existe una prueba con el nombre que usted ha ingresado.'
+                      );
+                    }
+                  } else {
                     ShowFailedNotification(
                       'Error al crear la prueba.',
-                      'Ya existe una prueba con el nombre que usted ha ingresado.'
+                      'Ocurrió un error inesperado al intentar crear la prueba. Intente nuevamente.'
                     );
                   }
-                  ShowFailedNotification(
-                    'Error al crear la prueba.',
-                    'Ocurrió un error inesperado al intentar crear la prueba. Intente nuevamente.'
-                  );
                 }
                 setComponentLoading(false);
               })}
