@@ -1,16 +1,18 @@
 import {
-  Card,
-  Title,
-  Text,
-  Grid,
   Button,
+  Card,
+  Center,
+  Grid,
   Image,
   Stack,
-  Center,
+  Text,
+  Title,
 } from '@mantine/core';
 import { useState } from 'react';
+
 import LoginModal from '../molecules/LoginModal';
 import SignupModal from '../molecules/SignupModal';
+
 const WelcomeCard = () => {
   const [displayLogin, setDisplayLogin] = useState(false);
   const [displaySignup, setDisplaySignup] = useState(false);

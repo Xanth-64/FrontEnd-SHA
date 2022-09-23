@@ -1,23 +1,28 @@
 import {
+  Button,
   Card,
-  Title,
-  Stack,
   Group,
   Pagination,
-  useMantineTheme,
-  Text,
   Select,
-  Button,
+  Stack,
+  Text,
+  Title,
+  useMantineTheme,
 } from '@mantine/core';
-import { useEffect, useState } from 'react';
 import { useViewportSize } from '@mantine/hooks';
+import { useEffect, useState } from 'react';
 import { Plus } from 'tabler-icons-react';
-import PrecedenceTable from '../molecules/PrecedenceTable';
-import CreatePrecedenceModal from '../molecules/CreatePrecedenceModal';
-import prelation from '../../types/api_schemas/prelation';
+
 import axiosInstance from '../../lib/constants/axiosInstance';
 import ShowFailedNotification from '../../lib/utils/ShowFailedNotification';
+
+import prelation from '../../types/api_schemas/prelation';
+
 import CustomLoadingOverlay from '../overlays/CustomLoadingOverlay';
+
+import CreatePrecedenceModal from '../molecules/CreatePrecedenceModal';
+import PrecedenceTable from '../molecules/PrecedenceTable';
+
 const CreatePrecedenceCard = ({
   updatePrecedenceGraph,
 }: {

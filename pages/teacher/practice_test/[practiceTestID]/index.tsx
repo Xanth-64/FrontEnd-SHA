@@ -2,16 +2,22 @@ import { Card, Select, Stack, Title, Transition } from '@mantine/core';
 import { GetServerSidePropsContext, NextPage } from 'next';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
-import CreatePracticeTestCard from '../../../../components/molecules/CreatePracticeTestCard';
-import CreateAdaptativeEventCard from '../../../../components/organisms/CreateAdaptativeEventCard';
-import TopNavigation from '../../../../components/organisms/TopNavigation';
-import CustomLoadingOverlay from '../../../../components/overlays/CustomLoadingOverlay';
-import NonSSRWrapper from '../../../../components/overlays/NonSSRWrapper';
-import CardHolder from '../../../../components/templates/CardHolder';
+
 import axiosInstance from '../../../../lib/constants/axiosInstance';
 import teacherPracticeTestTabList from '../../../../lib/constants/tabLists/teacherPracticeTestTabList';
 import ShowFailedNotification from '../../../../lib/utils/ShowFailedNotification';
+
 import practiceTest from '../../../../types/api_schemas/practiceTest';
+
+import CustomLoadingOverlay from '../../../../components/overlays/CustomLoadingOverlay';
+import NonSSRWrapper from '../../../../components/overlays/NonSSRWrapper';
+
+import CardHolder from '../../../../components/templates/CardHolder';
+
+import CreateAdaptativeEventCard from '../../../../components/organisms/CreateAdaptativeEventCard';
+import TopNavigation from '../../../../components/organisms/TopNavigation';
+
+import CreatePracticeTestCard from '../../../../components/molecules/CreatePracticeTestCard';
 
 const PracticeTestDisplay: NextPage = () => {
   const [currentTab, setCurrentTab] = useState<string>('configureadaptation');

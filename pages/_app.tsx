@@ -1,14 +1,16 @@
+import { MantineProvider } from '@mantine/core';
+import { NotificationsProvider } from '@mantine/notifications';
+import { showNotification } from '@mantine/notifications';
 import { AppProps } from 'next/app';
 import Head from 'next/head';
-import { MantineProvider } from '@mantine/core';
-import { NavbarProvider } from '../lib/contexts/NavbarContext';
-import { NotificationsProvider } from '@mantine/notifications';
-import CustomAppShell from '../components/organisms/CustomAppshell';
-import useUser from '../lib/hooks/useUser';
 import { useRouter } from 'next/router';
-import { showNotification } from '@mantine/notifications';
-import { ShieldLock } from 'tabler-icons-react';
 import { useEffect } from 'react';
+import { ShieldLock } from 'tabler-icons-react';
+
+import { NavbarProvider } from '../lib/contexts/NavbarContext';
+import useUser from '../lib/hooks/useUser';
+
+import CustomAppShell from '../components/organisms/CustomAppshell';
 
 export default function App(props: AppProps) {
   const { Component, pageProps } = props;

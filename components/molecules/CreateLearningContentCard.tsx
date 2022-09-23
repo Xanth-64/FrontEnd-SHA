@@ -12,14 +12,18 @@ import {
 } from '@mantine/core';
 import { useForm, zodResolver } from '@mantine/form';
 import { useScrollIntoView } from '@mantine/hooks';
-import RichTextEditor from '../atoms/RichText';
-import { X } from 'tabler-icons-react';
 import { useEffect, useState } from 'react';
-import handleImageUpload from '../../lib/utils/handleImageUpload';
-import LearningContentCreationSchema from '../../schemas/LearningContentCreationSchema';
-import createLearningContentCardProps from '../../types/component_schemas/createLearningContentCardProps';
+import { X } from 'tabler-icons-react';
+
 import axiosInstance from '../../lib/constants/axiosInstance';
 import ShowSuccessfullCreate from '../../lib/utils/ShowSuccessfullCreate';
+import handleImageUpload from '../../lib/utils/handleImageUpload';
+
+import createLearningContentCardProps from '../../types/component_schemas/createLearningContentCardProps';
+
+import RichTextEditor from '../atoms/RichText';
+
+import LearningContentCreationSchema from '../../schemas/LearningContentCreationSchema';
 
 const CreateLearningContentCard = ({
   displayContent,

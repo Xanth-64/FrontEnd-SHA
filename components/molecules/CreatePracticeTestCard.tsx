@@ -1,33 +1,37 @@
 import {
-  Card,
-  Stack,
-  TextInput,
-  Title,
-  Transition,
-  Text,
   Button,
-  Textarea,
-  Select,
-  Slider,
-  Group,
-  useMantineTheme,
-  UnstyledButton,
-  ThemeIcon,
+  Card,
   Checkbox,
   Divider,
   Grid,
+  Group,
   NumberInput,
+  Select,
+  Slider,
+  Stack,
+  Text,
+  TextInput,
+  Textarea,
+  ThemeIcon,
+  Title,
+  Transition,
+  UnstyledButton,
+  useMantineTheme,
 } from '@mantine/core';
 import { useForm, zodResolver } from '@mantine/form';
 import { useViewportSize } from '@mantine/hooks';
 import { useEffect, useState } from 'react';
 import { ArrowDown, ArrowUp, DeviceFloppy, Plus, X } from 'tabler-icons-react';
+
 import axiosInstance from '../../lib/constants/axiosInstance';
 import ShowFailedNotification from '../../lib/utils/ShowFailedNotification';
 import ShowSuccessfullCreate from '../../lib/utils/ShowSuccessfullCreate';
-import PracticeTestCreationSchema from '../../schemas/PracticeTestCreationSchema';
+
 import createPracticeTestCardProps from '../../types/component_schemas/createPracticeTestCardProps';
+
 import CustomLoadingOverlay from '../overlays/CustomLoadingOverlay';
+
+import PracticeTestCreationSchema from '../../schemas/PracticeTestCreationSchema';
 
 export const CreatePracticeTestCard = ({
   displayContent,

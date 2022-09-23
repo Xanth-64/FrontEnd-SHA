@@ -2,23 +2,25 @@ import {
   Button,
   Card,
   Center,
+  Group,
+  HoverCard,
   Image,
   Overlay,
+  Skeleton,
   Stack,
   Text,
   Title,
   useMantineTheme,
-  Group,
-  HoverCard,
-  Skeleton,
 } from '@mantine/core';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { MoodHappy, MoodSad } from 'tabler-icons-react';
+
 import axiosInstance from '../../lib/constants/axiosInstance';
-import mapAdaptativeEventStatus from '../../lib/utils/mapAdaptativeEventStatus';
 import ShowFailedNotification from '../../lib/utils/ShowFailedNotification';
 import ShowSuccessfullCreate from '../../lib/utils/ShowSuccessfullCreate';
+import mapAdaptativeEventStatus from '../../lib/utils/mapAdaptativeEventStatus';
+
 import adaptativeEvent from '../../types/api_schemas/adaptativeEvent';
 import studentTemplateCardProps from '../../types/component_schemas/studentTemplateCardProps';
 import adaptativeEventStatus from '../../types/other_schemas/adaptativeEventStatus';

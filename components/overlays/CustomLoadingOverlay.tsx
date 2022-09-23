@@ -1,4 +1,4 @@
-import { LoadingOverlay, LoadingOverlayProps, Loader } from '@mantine/core';
+import { Loader, LoadingOverlay, LoadingOverlayProps } from '@mantine/core';
 
 const CustomLoadingOverlay = (Props: LoadingOverlayProps) => {
   return (

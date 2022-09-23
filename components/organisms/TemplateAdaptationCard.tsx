@@ -1,22 +1,26 @@
 import {
-  Card,
-  Title,
-  Stack,
-  Group,
-  Text,
-  Slider,
   Button,
+  Card,
+  Group,
+  Slider,
+  Stack,
+  Text,
+  Title,
   useMantineTheme,
 } from '@mantine/core';
-import { useViewportSize } from '@mantine/hooks';
 import { useForm, zodResolver } from '@mantine/form';
+import { useViewportSize } from '@mantine/hooks';
 import { useEffect, useState } from 'react';
 import { DeviceFloppy, InfoCircle } from 'tabler-icons-react';
-import TemplateAdaptionSchema from '../../schemas/TemplateAdaptationSchema';
-import templateAdaptionCardProps from '../../types/component_schemas/templateAdaptionCardProps';
+
 import axiosInstance from '../../lib/constants/axiosInstance';
-import ShowSuccessfullCreate from '../../lib/utils/ShowSuccessfullCreate';
 import ShowFailedNotification from '../../lib/utils/ShowFailedNotification';
+import ShowSuccessfullCreate from '../../lib/utils/ShowSuccessfullCreate';
+
+import templateAdaptionCardProps from '../../types/component_schemas/templateAdaptionCardProps';
+
+import TemplateAdaptionSchema from '../../schemas/TemplateAdaptationSchema';
+
 const TemplateAdaptationCard = ({
   currentTemplate,
   loading,

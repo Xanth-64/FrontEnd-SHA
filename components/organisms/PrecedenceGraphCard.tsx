@@ -1,10 +1,13 @@
-import { Card, Title, Stack, useMantineTheme, Center } from '@mantine/core';
+import { Card, Center, Stack, Title, useMantineTheme } from '@mantine/core';
 import { useViewportSize } from '@mantine/hooks';
-import precedenceGraphCardProps from '../../types/component_schemas/precedenceGraphCardProps';
-import CustomLoadingOverlay from '../overlays/CustomLoadingOverlay';
 import dynamic from 'next/dynamic';
 import { useEffect, useRef } from 'react';
 import { ForceGraphMethods } from 'react-force-graph-2d';
+
+import precedenceGraphCardProps from '../../types/component_schemas/precedenceGraphCardProps';
+
+import CustomLoadingOverlay from '../overlays/CustomLoadingOverlay';
+
 const PrecedenceGraphCard = ({
   graphData,
   updatePrecedenceGraph,

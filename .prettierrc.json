@@ -5,5 +5,18 @@
   "singleQuote": true,
   "bracketSpacing": true,
   "arrowParens": "always",
-  "endOfLine": "lf"
+  "endOfLine": "lf",
+  "importOrder": [
+    "lib/(.*)$",
+    "types/(.*)$",
+    "overlays/(.*)$",
+    "templates/(.*)$",
+    "organisms/(.*)$",
+    "molecules/(.*)$",
+    "atoms/(.*)$",
+    "ions/(.*)$",
+    "^[./]"
+  ],
+  "importOrderSeparation": true,
+  "importOrderSortSpecifiers": true
 }

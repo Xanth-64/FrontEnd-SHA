@@ -1,5 +1,6 @@
+import { Adjustments, Ruler2, SquarePlus } from 'tabler-icons-react';
+
 import topNavigationTab from '../../../types/component_schemas/topNavigationTab';
-import { SquarePlus, Adjustments, Ruler2 } from 'tabler-icons-react';
 
 const teacherTemplateTabList: topNavigationTab[] = [
   {

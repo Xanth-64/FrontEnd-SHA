@@ -12,12 +12,15 @@ import {
 import { useForm, zodResolver } from '@mantine/form';
 import { useEffect, useState } from 'react';
 import { DeviceFloppy } from 'tabler-icons-react';
+
 import axiosInstance from '../../lib/constants/axiosInstance';
-import mapInteractionTriggers from '../../lib/utils/mapInteractionTriggers';
 import ShowFailedNotification from '../../lib/utils/ShowFailedNotification';
 import ShowSuccessfullCreate from '../../lib/utils/ShowSuccessfullCreate';
-import MeasurableInteractionSchema from '../../schemas/MeasurableInteractionSchema';
+import mapInteractionTriggers from '../../lib/utils/mapInteractionTriggers';
+
 import createInteractionModalProps from '../../types/component_schemas/createInteractionModalProps';
+
+import MeasurableInteractionSchema from '../../schemas/MeasurableInteractionSchema';
 
 const CreateInteractionModal = ({
   interactionToUpdate,

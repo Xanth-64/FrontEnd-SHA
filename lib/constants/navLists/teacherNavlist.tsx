@@ -1,10 +1,7 @@
+import { Bulb, ChartInfographic, Notebook, School } from 'tabler-icons-react';
+
 import navElement from '../../../types/component_schemas/navElement';
-import {
-  Bulb,
-  Notebook,
-  School,
-  ChartInfographic,
-} from 'tabler-icons-react';
+
 const teacherNavList: navElement[] = [
   {
     link: '/teacher/topics',

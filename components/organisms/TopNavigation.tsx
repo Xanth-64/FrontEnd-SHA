@@ -1,13 +1,14 @@
 import {
   Card,
-  SegmentedControl,
   Center,
   Group,
+  SegmentedControl,
+  Stack,
   Text,
   useMantineTheme,
-  Stack,
 } from '@mantine/core';
 import { useViewportSize } from '@mantine/hooks';
+
 import topNavigationProps from '../../types/component_schemas/topNavigationProps';
 
 const TopNavigation = ({

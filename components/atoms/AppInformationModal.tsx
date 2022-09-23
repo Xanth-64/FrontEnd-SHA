@@ -1,4 +1,4 @@
-import { Modal, ModalProps, Text, Stack } from '@mantine/core';
+import { Modal, ModalProps, Stack, Text } from '@mantine/core';
 
 const AppInformationModal = (props: ModalProps) => {
   return (

@@ -1,24 +1,28 @@
 import {
-  Modal,
-  ModalProps,
-  Title,
-  Stack,
-  TextInput,
-  Select,
-  Slider,
-  Text,
   Button,
   Grid,
+  Modal,
+  ModalProps,
+  Select,
+  Slider,
+  Stack,
+  Text,
+  TextInput,
+  Title,
 } from '@mantine/core';
-import topic from '../../types/api_schemas/topic';
 import { useForm, zodResolver } from '@mantine/form';
-import axiosInstance from '../../lib/constants/axiosInstance';
-import TopicSchema from '../../schemas/TopicSchema';
 import { useEffect, useState } from 'react';
-import iconList from '../../lib/constants/iconList';
-import IconSelectItem from '../atoms/IconSelectItem';
 import { DeviceFloppy } from 'tabler-icons-react';
+
+import axiosInstance from '../../lib/constants/axiosInstance';
+import iconList from '../../lib/constants/iconList';
 import ShowSuccessfullCreate from '../../lib/utils/ShowSuccessfullCreate';
+
+import topic from '../../types/api_schemas/topic';
+
+import IconSelectItem from '../atoms/IconSelectItem';
+
+import TopicSchema from '../../schemas/TopicSchema';
 
 interface CreateTopicModalProps extends ModalProps {
   topicToUpdate?: topic;

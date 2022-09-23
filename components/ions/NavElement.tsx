@@ -14,10 +14,12 @@ import {
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { ExternalLinkOff, MoodHappy, MoodSad } from 'tabler-icons-react';
+
 import axiosInstance from '../../lib/constants/axiosInstance';
 import { useNavbarContext } from '../../lib/contexts/NavbarContext';
-import mapAdaptativeEventStatus from '../../lib/utils/mapAdaptativeEventStatus';
 import ShowFailedNotification from '../../lib/utils/ShowFailedNotification';
+import mapAdaptativeEventStatus from '../../lib/utils/mapAdaptativeEventStatus';
+
 import adaptativeEvent from '../../types/api_schemas/adaptativeEvent';
 import navElement from '../../types/component_schemas/navElement';
 import adaptativeEventStatus from '../../types/other_schemas/adaptativeEventStatus';

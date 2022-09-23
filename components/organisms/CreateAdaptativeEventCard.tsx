@@ -2,13 +2,17 @@ import { Button, Card, Stack, Title, useMantineTheme } from '@mantine/core';
 import { useViewportSize } from '@mantine/hooks';
 import { useEffect, useState } from 'react';
 import { Plus } from 'tabler-icons-react';
+
 import axiosInstance from '../../lib/constants/axiosInstance';
 import ShowFailedNotification from '../../lib/utils/ShowFailedNotification';
+
 import adaptativeEvent from '../../types/api_schemas/adaptativeEvent';
 import createAdaptativeEventCardProps from '../../types/component_schemas/createAdaptativeEventCardProps';
+
+import CustomLoadingOverlay from '../overlays/CustomLoadingOverlay';
+
 import AdaptativeEventTable from '../molecules/AdaptativeEventTable';
 import CreateAdaptativeEventModal from '../molecules/CreateAdaptativeEventModal';
-import CustomLoadingOverlay from '../overlays/CustomLoadingOverlay';
 
 const CreateAdaptativeEventCard = ({
   adaptative_object_id,

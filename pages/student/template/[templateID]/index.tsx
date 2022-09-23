@@ -2,12 +2,18 @@ import type { NextPage } from 'next';
 import type { GetServerSidePropsContext } from 'next';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
-import NonSSRWrapper from '../../../../components/overlays/NonSSRWrapper';
+
 import axiosInstance from '../../../../lib/constants/axiosInstance';
 import ShowFailedNotification from '../../../../lib/utils/ShowFailedNotification';
+
 import template from '../../../../types/api_schemas/template';
-import TemplatePageDisplay from '../../../../components/organisms/TemplatePageDisplay';
+
+import NonSSRWrapper from '../../../../components/overlays/NonSSRWrapper';
+
 import CardHolder from '../../../../components/templates/CardHolder';
+
+import TemplatePageDisplay from '../../../../components/organisms/TemplatePageDisplay';
+
 import StudentTemplateCard from '../../../../components/molecules/StudentTemplateCard';
 
 const Template: NextPage = () => {

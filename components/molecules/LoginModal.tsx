@@ -1,20 +1,22 @@
 import {
-  ModalProps,
-  Modal,
-  Stack,
-  Title,
-  TextInput,
-  PasswordInput,
   Button,
+  Modal,
+  ModalProps,
+  PasswordInput,
+  Stack,
+  TextInput,
+  Title,
 } from '@mantine/core';
-import { useState } from 'react';
 import { useForm, zodResolver } from '@mantine/form';
-import { useRouter } from 'next/router';
-import LoginSchema from '../../schemas/LoginSchema';
-import axiosInstance from '../../lib/constants/axiosInstance';
 import { setCookie } from 'cookies-next';
-import useUser from '../../lib/hooks/useUser';
+import { useRouter } from 'next/router';
+import { useState } from 'react';
 import { useSWRConfig } from 'swr';
+
+import axiosInstance from '../../lib/constants/axiosInstance';
+import useUser from '../../lib/hooks/useUser';
+
+import LoginSchema from '../../schemas/LoginSchema';
 
 const LoginModal = (props: ModalProps) => {
   const form = useForm({

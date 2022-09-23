@@ -1,10 +1,13 @@
-import navElement from '../../types/component_schemas/navElement';
-import { Stack, Loader, Center } from '@mantine/core';
+import { Center, Loader, Stack } from '@mantine/core';
 import { v4 } from 'uuid';
+
+import navElement from '../../types/component_schemas/navElement';
+
+import NavElement from '../ions/NavElement';
+
 type Props = {
   navElementList: navElement[];
 };
-import NavElement from '../ions/NavElement';
 
 const NavbarList = (props: Props) => {
   const { navElementList } = props;

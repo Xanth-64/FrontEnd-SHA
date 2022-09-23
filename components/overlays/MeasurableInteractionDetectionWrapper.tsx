@@ -6,7 +6,9 @@ import {
   useInterval,
 } from '@mantine/hooks';
 import { useCallback, useEffect, useState } from 'react';
+
 import axiosInstance from '../../lib/constants/axiosInstance';
+
 import measurableInteraction from '../../types/api_schemas/measurableInteraction';
 import measurableInteractionDetectionWrapperProps from '../../types/component_schemas/measurableInteractionDetectionWrapperProps';
 

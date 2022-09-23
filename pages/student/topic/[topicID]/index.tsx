@@ -1,8 +1,10 @@
 import type { NextPage } from 'next';
 import type { GetServerSidePropsContext } from 'next';
 import { useRouter } from 'next/router';
-import StudentTemplateCardDisplay from '../../../../components/organisms/StudentTemplateCardDisplay';
+
 import NonSSRWrapper from '../../../../components/overlays/NonSSRWrapper';
+
+import StudentTemplateCardDisplay from '../../../../components/organisms/StudentTemplateCardDisplay';
 
 const Topic: NextPage = () => {
   const router = useRouter();

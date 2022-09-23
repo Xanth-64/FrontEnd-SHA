@@ -1,5 +1,6 @@
-import adaptativeEvent from '../api_schemas/adaptativeEvent';
 import { ModalProps } from '@mantine/core';
+
+import adaptativeEvent from '../api_schemas/adaptativeEvent';
 
 interface createAdaptativeEventModalProps extends ModalProps {
   adaptativeEventToUpdate?: adaptativeEvent;

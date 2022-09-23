@@ -1,22 +1,27 @@
 import {
+  Button,
   Card,
   Group,
-  Stack,
-  Title,
   Pagination,
   Select,
-  useMantineTheme,
+  Stack,
   Text,
-  Button,
+  Title,
+  useMantineTheme,
 } from '@mantine/core';
 import { useViewportSize } from '@mantine/hooks';
-import { useState, useEffect } from 'react';
-import TopicTable from '../molecules/TopicTable';
-import axiosInstance from '../../lib/constants/axiosInstance';
-import topic from '../../types/api_schemas/topic';
+import { useEffect, useState } from 'react';
 import { Plus } from 'tabler-icons-react';
-import CreateTopicModal from '../molecules/CreateTopicModal';
+
+import axiosInstance from '../../lib/constants/axiosInstance';
+
+import topic from '../../types/api_schemas/topic';
+
 import CustomLoadingOverlay from '../overlays/CustomLoadingOverlay';
+
+import CreateTopicModal from '../molecules/CreateTopicModal';
+import TopicTable from '../molecules/TopicTable';
+
 const CreateTopicCard = () => {
   const theme = useMantineTheme();
   const { width } = useViewportSize();

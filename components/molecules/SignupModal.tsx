@@ -1,22 +1,25 @@
 import {
-  ModalProps,
-  Modal,
-  Stack,
-  Title,
-  TextInput,
-  PasswordInput,
-  Checkbox,
   Button,
+  Checkbox,
+  Modal,
+  ModalProps,
+  PasswordInput,
+  Stack,
   Text,
+  TextInput,
+  Title,
 } from '@mantine/core';
-import { useState } from 'react';
 import { useForm, zodResolver } from '@mantine/form';
-import SignupSchema from '../../schemas/SignupSchema';
-import axiosInstance from '../../lib/constants/axiosInstance';
 import { setCookie } from 'cookies-next';
 import { useRouter } from 'next/router';
-import useUser from '../../lib/hooks/useUser';
+import { useState } from 'react';
 import { useSWRConfig } from 'swr';
+
+import axiosInstance from '../../lib/constants/axiosInstance';
+import useUser from '../../lib/hooks/useUser';
+
+import SignupSchema from '../../schemas/SignupSchema';
+
 interface SignupModalProps extends ModalProps {
   userRedirect: () => void;
 }

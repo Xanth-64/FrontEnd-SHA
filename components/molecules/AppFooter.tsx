@@ -1,15 +1,16 @@
 import {
+  Center,
   Footer,
   Grid,
-  Text,
-  Center,
-  useMantineTheme,
   MediaQuery,
+  Text,
+  useMantineTheme,
 } from '@mantine/core';
-import { InfoCircle } from 'tabler-icons-react';
 import { useState } from 'react';
+import { InfoCircle } from 'tabler-icons-react';
 
 import AppInformationModal from '../atoms/AppInformationModal';
+
 const AppFooter = () => {
   const theme = useMantineTheme();
   const [openModal, setOpenModal] = useState(false);

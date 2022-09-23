@@ -1,6 +1,7 @@
-import { forwardRef } from 'react';
-import { Group, Text } from '@mantine/core';
 import { Icon } from '@iconify/react';
+import { Group, Text } from '@mantine/core';
+import { forwardRef } from 'react';
+
 interface ItemProps extends React.ComponentPropsWithoutRef<'div'> {
   label: string;
   description: string;

@@ -14,8 +14,10 @@ import {
 import { useEffect, useState } from 'react';
 import { InfoSquare } from 'tabler-icons-react';
 import { v4 } from 'uuid';
+
 import axiosInstance from '../../lib/constants/axiosInstance';
 import mapAdaptativeEventStatus from '../../lib/utils/mapAdaptativeEventStatus';
+
 import adaptativeEvent from '../../types/api_schemas/adaptativeEvent';
 import answerAlternative from '../../types/api_schemas/answerAlternative';
 import studentTestQuestionCardProps from '../../types/component_schemas/studentTestQuestionCardProps';

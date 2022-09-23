@@ -1,21 +1,25 @@
-import createTemplateModalProps from '../../types/component_schemas/createTemplateModalProps';
 import {
+  Button,
+  Grid,
   Modal,
-  Stack,
-  Title,
   Slider,
+  Stack,
+  Text,
   TextInput,
   Textarea,
-  Text,
-  Grid,
-  Button,
+  Title,
 } from '@mantine/core';
 import { useForm, zodResolver } from '@mantine/form';
 import { useEffect, useState } from 'react';
-import TemplateSchema from '../../schemas/TemplateSchema';
 import { DeviceFloppy } from 'tabler-icons-react';
+
 import axiosInstance from '../../lib/constants/axiosInstance';
 import ShowSuccessfullCreate from '../../lib/utils/ShowSuccessfullCreate';
+
+import createTemplateModalProps from '../../types/component_schemas/createTemplateModalProps';
+
+import TemplateSchema from '../../schemas/TemplateSchema';
+
 const CreateTemplateModal = ({
   templateToUpdate,
   topicId,

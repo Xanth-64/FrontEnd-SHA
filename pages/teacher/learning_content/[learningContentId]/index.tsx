@@ -2,17 +2,24 @@ import type { NextPage } from 'next';
 import type { GetServerSidePropsContext } from 'next';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
-import UpdateLearningContentCard from '../../../../components/molecules/UpdateLearningContentCard';
-import CreateAdaptativeEventCard from '../../../../components/organisms/CreateAdaptativeEventCard';
-import PageInteractionsCard from '../../../../components/organisms/PageInteractionsCard';
-import TopNavigation from '../../../../components/organisms/TopNavigation';
-import CustomLoadingOverlay from '../../../../components/overlays/CustomLoadingOverlay';
-import NonSSRWrapper from '../../../../components/overlays/NonSSRWrapper';
-import CardHolder from '../../../../components/templates/CardHolder';
+
 import axiosInstance from '../../../../lib/constants/axiosInstance';
 import teacherPageTabList from '../../../../lib/constants/tabLists/teacherPageTabList';
 import ShowFailedNotification from '../../../../lib/utils/ShowFailedNotification';
+
 import learningContent from '../../../../types/api_schemas/learningContent';
+
+import CustomLoadingOverlay from '../../../../components/overlays/CustomLoadingOverlay';
+import NonSSRWrapper from '../../../../components/overlays/NonSSRWrapper';
+
+import CardHolder from '../../../../components/templates/CardHolder';
+
+import CreateAdaptativeEventCard from '../../../../components/organisms/CreateAdaptativeEventCard';
+import PageInteractionsCard from '../../../../components/organisms/PageInteractionsCard';
+import TopNavigation from '../../../../components/organisms/TopNavigation';
+
+import UpdateLearningContentCard from '../../../../components/molecules/UpdateLearningContentCard';
+
 const PageDisplay: NextPage = () => {
   const [currentTab, setCurrentTab] = useState<string>(
     teacherPageTabList[0].value

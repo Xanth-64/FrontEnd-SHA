@@ -1,15 +1,20 @@
-import { Card, Title, Stack, Text, Button } from '@mantine/core';
+import { Button, Card, Stack, Text, Title } from '@mantine/core';
 import { useForm, zodResolver } from '@mantine/form';
 import { useEffect, useState } from 'react';
 import { DeviceFloppy } from 'tabler-icons-react';
+
 import axiosInstance from '../../lib/constants/axiosInstance';
-import handleImageUpload from '../../lib/utils/handleImageUpload';
 import ShowFailedNotification from '../../lib/utils/ShowFailedNotification';
 import ShowSuccessfullCreate from '../../lib/utils/ShowSuccessfullCreate';
-import LearningContentEditionSchema from '../../schemas/LearningContentEditionSchema';
+import handleImageUpload from '../../lib/utils/handleImageUpload';
+
 import updateLearningContentCardProps from '../../types/component_schemas/updateLearningContentCardProps';
-import RichTextEditor from '../atoms/RichText';
+
 import CustomLoadingOverlay from '../overlays/CustomLoadingOverlay';
+
+import RichTextEditor from '../atoms/RichText';
+
+import LearningContentEditionSchema from '../../schemas/LearningContentEditionSchema';
 
 const UpdateLearningContentCard = ({
   currentLearningContent,

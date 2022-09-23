@@ -1,6 +1,7 @@
+import { Button, Card, Center, Grid, Image, Stack, Title } from '@mantine/core';
 import type { NextPage } from 'next';
 import { useRouter } from 'next/router';
-import { Center, Stack, Title, Image, Card, Grid, Button } from '@mantine/core';
+
 const Custom404: NextPage = () => {
   const router = useRouter();
   return (

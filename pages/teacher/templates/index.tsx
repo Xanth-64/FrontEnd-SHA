@@ -1,9 +1,11 @@
 import type { NextPage } from 'next';
 import type { GetServerSidePropsContext } from 'next';
 import { useState } from 'react';
+
+import CardHolder from '../../../components/templates/CardHolder';
+
 import CreateTemplateCard from '../../../components/organisms/CreateTemplateCard';
 import SelectTopicCard from '../../../components/organisms/SelectTopicCard';
-import CardHolder from '../../../components/templates/CardHolder';
 
 const Templates: NextPage = () => {
   const [currentTopic, setCurrentTopic] = useState<string>('');
