@@ -68,6 +68,7 @@ const SignupModal = (props: SignupModalProps) => {
               setCookie('idToken', response.data.data.idToken, {
                 maxAge: response.data.data.expiresIn,
               });
+              setCookie('refreshToken', response.data.data.refreshToken);
               await mutate('current_user/');
               if (user) {
                 router.push(`/${user?.role[0].role_name}`);

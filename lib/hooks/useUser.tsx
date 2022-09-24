@@ -1,5 +1,5 @@
 import axiosRetry from 'axios-retry';
-import { deleteCookie, getCookie, hasCookie } from 'cookies-next';
+import { deleteCookie, getCookie, hasCookie, setCookie } from 'cookies-next';
 import useSWR from 'swr';
 
 import role from '../../types/api_schemas/role';
@@ -30,6 +30,31 @@ const useUser = () => {
           error?.response?.status === 401 ||
           error?.response?.status === 500
         ) {
+          if (hasCookie('refreshToken')) {
+            try {
+              const refreshResponse = await axiosInstance.post(
+                '/auth/refresh',
+                {
+                  refreshToken: getCookie('refreshToken'),
+                }
+              );
+              if (refreshResponse.status === 200) {
+                deleteCookie('idToken');
+                deleteCookie('refreshToken');
+                setCookie('idToken', refreshResponse.data.data.id_token, {
+                  maxAge: refreshResponse.data.data.expiresIn,
+                });
+                setCookie(
+                  'refreshToken',
+                  refreshResponse.data.data.refresh_token
+                );
+                const user_data = await axiosInstance.get(user_path);
+                return user_data.data.data;
+              }
+            } catch (err: any) {
+              console.error(err);
+            }
+          }
           deleteCookie('idToken');
         }
       }
