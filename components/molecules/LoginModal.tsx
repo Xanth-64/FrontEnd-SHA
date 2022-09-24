@@ -47,6 +47,7 @@ const LoginModal = (props: ModalProps) => {
               setCookie('idToken', response.data.data.idToken, {
                 maxAge: response.data.data.expiresIn,
               });
+              setCookie('refreshToken', response.data.data.refreshToken);
               await mutate('current_user/');
               router.push(`${user?.role[0].role_name}`);
               return;
