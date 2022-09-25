@@ -1,8 +1,97 @@
-import '../styles/globals.css';
-import type { AppProps } from 'next/app';
+import { MantineProvider } from '@mantine/core';
+import { NotificationsProvider } from '@mantine/notifications';
+import { showNotification } from '@mantine/notifications';
+import { AppProps } from 'next/app';
+import Head from 'next/head';
+import { useRouter } from 'next/router';
+import { useEffect } from 'react';
+import { ShieldLock } from 'tabler-icons-react';
 
-function MyApp({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />;
+import { NavbarProvider } from '../lib/contexts/NavbarContext';
+import useUser from '../lib/hooks/useUser';
+
+import CustomAppShell from '../components/organisms/CustomAppshell';
+
+export default function App(props: AppProps) {
+  const { Component, pageProps } = props;
+  const { user, isLoading } = useUser();
+  const router = useRouter();
+  const validateAuth = () => {
+    if (!isLoading) {
+      if (pageProps.protected) {
+        if (!user) {
+          router.push('/home');
+          showNotification({
+            title: 'Autenticación Requerida',
+            message:
+              'Su autenticación es requerida para acceder a esta página.',
+            autoClose: 10000,
+            color: 'yellow',
+            icon: <ShieldLock />,
+          });
+          return;
+        }
+        if (pageProps.expected_role === 'teacher') {
+          if (user?.role[0].role_name !== 'teacher') {
+            router.push('/student');
+            showNotification({
+              title: 'No Autorizado',
+              message:
+                'Usted no posee los permisos necesarios para acceder a esta página.',
+              autoClose: 10000,
+              color: 'red',
+              icon: <ShieldLock />,
+            });
+            return;
+          }
+        }
+        if (pageProps.expected_role === 'student') {
+          if (
+            !user.user.vark_completed &&
+            router.route.search('vark_test') === -1
+          ) {
+            router.push('/student/vark_test');
+          }
+        }
+      } else {
+        if (user) {
+          router.push(`/${user.role[0].role_name}`);
+        }
+      }
+    }
+  };
+  useEffect(validateAuth, [user, isLoading, router.route]);
+  return (
+    <>
+      <Head>
+        <title>Algoritmos y Programación</title>
+        <link rel="icon" href="/favicon.ico"></link>
+        <meta
+          name="viewport"
+          content="minimum-scale=1, initial-scale=1, width=device-width"
+        />
+      </Head>
+
+      <MantineProvider
+        withGlobalStyles
+        withNormalizeCSS
+        theme={{
+          colorScheme: 'light',
+          loader: 'bars',
+        }}
+      >
+        <NavbarProvider>
+          <CustomAppShell>
+            <NotificationsProvider
+              limit={1}
+              position={'top-right'}
+              zIndex={1000}
+            >
+              <Component {...pageProps} style={{ height: '100%' }} />
+            </NotificationsProvider>
+          </CustomAppShell>
+        </NavbarProvider>
+      </MantineProvider>
+    </>
+  );
 }
-
-export default MyApp;
