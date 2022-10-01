@@ -21,12 +21,6 @@ const teacherNavList: navElement[] = [
     color: 'blue',
     icon: <School size={16} />,
   },
-  {
-    link: '/teacher/dashboard',
-    title: 'Dashboard',
-    color: 'cyan',
-    icon: <ChartInfographic size={16} />,
-  },
 ];
 
 export default teacherNavList;
