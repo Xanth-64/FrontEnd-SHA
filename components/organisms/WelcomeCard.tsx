@@ -31,8 +31,8 @@ const WelcomeCard = () => {
         <Title order={3}>¡Bienvenido!</Title>
         <Text size={'md'}>
           Este es un prototipo de un Sistema de Hipermedia Adaptativa para los
-          alumnos de Algoritmos de Programación. Esperamos que le sea de
-          utilidad en su proceso de preparación para la asignatura.{' '}
+          alumnos de Algoritmos y Programación. Esperamos que le sea de utilidad
+          en su proceso de preparación para la asignatura.{' '}
         </Text>
         <Grid align="center" justify="space-around">
           <Grid.Col md={6}>

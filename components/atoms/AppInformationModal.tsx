@@ -9,7 +9,7 @@ const AppInformationModal = (props: ModalProps) => {
         <Text size="sm">
           El presente aplicativo fue desarrollado como un prototipo funcional de
           un Sistema de Hipermedia Adaptativa. Para el Apoyo en la Enseñanza de
-          Algoritmos de Programación.{' '}
+          Algoritmos y Programación.{' '}
         </Text>
         <Text size={'xs'}>
           Copyright © 2022 - Universidad Metropolitana. Todos los derechos
