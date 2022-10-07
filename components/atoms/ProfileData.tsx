@@ -9,7 +9,7 @@ import {
 } from '@mantine/core';
 import { deleteCookie } from 'cookies-next';
 import { useRouter } from 'next/router';
-import { ChevronRight, Logout, Settings } from 'tabler-icons-react';
+import { ChevronRight, Home, Logout, Settings } from 'tabler-icons-react';
 
 import { useNavbarContext } from '../../lib/contexts/NavbarContext';
 
@@ -93,6 +93,17 @@ const ProfileData = (props: userProps) => {
         </UnstyledButton>
       </Menu.Target>
       <Menu.Dropdown>
+        <Menu.Item
+          onClick={() => {
+            if (displayNavbar) {
+              toggleDisplay();
+            }
+            router.push(`/${role}`);
+          }}
+          icon={<Home size={18} />}
+        >
+          Vista Principal
+        </Menu.Item>
         <Menu.Item
           onClick={() => {
             if (displayNavbar) {
