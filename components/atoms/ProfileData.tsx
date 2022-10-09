@@ -120,6 +120,7 @@ const ProfileData = (props: userProps) => {
             if (displayNavbar) {
               toggleDisplay();
             }
+            deleteCookie('refreshToken');
             deleteCookie('idToken');
             router.push('/home');
           }}
