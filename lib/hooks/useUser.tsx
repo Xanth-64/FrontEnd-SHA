@@ -14,6 +14,19 @@ const useUser = () => {
   } | null;
 
   const fetchUser = async (user_path: string) => {
+    if (!hasCookie('idToken') && hasCookie('refreshToken')) {
+      const refreshResponse = await axiosInstance.post('/auth/refresh', {
+        refreshToken: getCookie('refreshToken'),
+      });
+      if (refreshResponse.status === 200) {
+        deleteCookie('idToken');
+        deleteCookie('refreshToken');
+        setCookie('idToken', refreshResponse.data.data.id_token, {
+          maxAge: refreshResponse.data.data.expiresIn,
+        });
+        setCookie('refreshToken', refreshResponse.data.data.refresh_token);
+      }
+    }
     if (hasCookie('idToken')) {
       try {
         axiosRetry(axiosInstance, {
